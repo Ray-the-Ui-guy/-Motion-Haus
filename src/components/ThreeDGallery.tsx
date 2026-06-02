@@ -14,70 +14,49 @@ interface ThreeDGalleryProps {
 }
 
 export const ThreeDGallery: React.FC<ThreeDGalleryProps> = ({ items }) => {
-  // Explicit design tokens provided by the user (arranged index 0 to 6 representing Card 7 to Card 1)
+  // Percentage-based fluid design tokens ensuring exact 10px spacing and perfect scale
   const layouts = [
     // Card 7 (leftmost)
     {
-      width: '186px',
-      height: '494px',
-      translateX: '-640px',
-      translateY: '-127px',
-      rotateY: '0deg',
-      translateZ: '0px',
+      width: '13.5%',
+      aspectRatio: '186/494',
+      translateY: '-100px',
     },
     // Card 6
     {
-      width: '226px',
-      height: '368px',
-      translateX: '-414px',
-      translateY: '-64px',
-      rotateY: '0deg',
-      translateZ: '0px',
+      width: '16.4%',
+      aspectRatio: '226/368',
+      translateY: '-50px',
     },
     // Card 5
     {
-      width: '186px',
-      height: '271px',
-      translateX: '-194px',
-      translateY: '-16px',
-      rotateY: '0deg',
-      translateZ: '0px',
+      width: '13.5%',
+      aspectRatio: '186/271',
+      translateY: '-13px',
     },
     // Card 4 (center)
     {
-      width: '174px',
-      height: '239px',
-      translateX: '0px',
+      width: '12.6%',
+      aspectRatio: '174/239',
       translateY: '0px',
-      rotateY: '0deg',
-      translateZ: '0px',
     },
     // Card 3
     {
-      width: '185px',
-      height: '276px',
-      translateX: '192px',
-      translateY: '-20px',
-      rotateY: '0deg',
-      translateZ: '0px',
+      width: '13.4%',
+      aspectRatio: '185/276',
+      translateY: '-16px',
     },
     // Card 2
     {
-      width: '227px',
-      height: '374px',
-      translateX: '414px',
-      translateY: '-65px',
-      rotateY: '0deg',
-      translateZ: '0px',
+      width: '16.5%',
+      aspectRatio: '227/374',
+      translateY: '-51px',
     },
     // Card 1 (rightmost)
     {
-      width: '193px',
-      height: '508px',
-      translateX: '640px',
-      translateY: '-128px',
-      rotateY: '0deg',
-      translateZ: '0px',
+      width: '14.0%',
+      aspectRatio: '193/508',
+      translateY: '-100px',
     },
   ];
 
@@ -85,7 +64,7 @@ export const ThreeDGallery: React.FC<ThreeDGalleryProps> = ({ items }) => {
     <div
       style={{
         width: '100%',
-        height: '530px', // Adjusted to fully view 508px tall cards
+        height: '440px', // Sized to fit scaled cards and translateY offsets
         position: 'relative',
         background: 'transparent',
         display: 'flex',
@@ -95,62 +74,44 @@ export const ThreeDGallery: React.FC<ThreeDGalleryProps> = ({ items }) => {
         padding: 0,
       }}
     >
-      {/* ── VIEWPORT CONTAINER (Constrained to desktop screen bounds) ── */}
+      {/* ── VIEWPORT CONTAINER (Constrained exactly to vertical dashed guide lines) ── */}
       <div
         style={{
-          width: '100%',
-          maxWidth: '1280px', 
+          width: 'calc(100% - 116px)', // Extends exactly between the left (58px) and right (58px) guidelines
           height: '100%',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'center',
-          overflow: 'hidden',
-          borderRadius: '16px',
-          perspective: '1500px', 
+          justifyContent: 'space-between',
+          gap: '10px', // Exact 10px spacing
         }}
       >
-        <div
-          style={{
-            width: '100%',
-            height: '100%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            position: 'relative',
-            transformStyle: 'preserve-3d',
-          }}
-        >
-          {items.map((card, index) => {
-            const layout = layouts[index] || layouts[3];
+        {items.map((card, index) => {
+          const layout = layouts[index] || layouts[3];
 
-            return (
-              <div
-                key={card.id}
-                style={{
-                  position: 'absolute',
-                  width: layout.width,
-                  height: layout.height,
-                  left: '50%',
-                  transformStyle: 'preserve-3d',
-                  pointerEvents: 'auto',
-                  // Position relative to absolute center of parent using exact translation metrics
-                  transform: `translateX(-50%) translateX(${layout.translateX}) translateY(${layout.translateY}) rotateY(${layout.rotateY}) translateZ(${layout.translateZ})`,
-                  transition: 'transform 0.5s ease',
-                }}
-              >
-                <TickerCard
-                  id={card.id}
-                  imageUrl={card.imageUrl}
-                  title={card.title}
-                  metric={card.metric}
-                  description={card.description}
-                  width="100%"
-                  height="100%"
-                />
-              </div>
-            );
-          })}
-        </div>
+          return (
+            <div
+              key={card.id}
+              style={{
+                width: layout.width,
+                aspectRatio: layout.aspectRatio,
+                transform: `translateY(${layout.translateY})`,
+                position: 'relative',
+                borderRadius: '12px',
+                overflow: 'hidden',
+              }}
+            >
+              <TickerCard
+                id={card.id}
+                imageUrl={card.imageUrl}
+                title={card.title}
+                metric={card.metric}
+                description={card.description}
+                width="100%"
+                height="100%"
+              />
+            </div>
+          );
+        })}
       </div>
     </div>
   );
