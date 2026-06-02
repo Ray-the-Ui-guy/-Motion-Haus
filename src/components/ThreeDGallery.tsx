@@ -71,6 +71,7 @@ export const ThreeDGallery: React.FC<ThreeDGalleryProps> = ({ items }) => {
       <div
         style={{
           width: 'calc(100% - 146px)', // Leaves exactly 15px gap from left (58px) and right (58px) guide lines
+          maxWidth: '1200px', // Prevents cards from scaling too large and clipping on wide screens
           height: '100%',
           display: 'flex',
           alignItems: 'center',
