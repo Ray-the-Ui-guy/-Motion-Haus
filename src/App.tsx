@@ -1,15 +1,15 @@
 import { useState, useEffect } from 'react';
 import Loader from './components/Loader';
 import GlowingButton from './components/GlowingButton';
-import heroBg from './assets/hero section (1).png';
+const heroBg = 'https://files.catbox.moe/u0fblg.png';
 import badgeIcon from './assets/Frame 2087328322.svg';
-import card1 from './assets/eb7d1248ca9801e1537108751909d610541bd6d7.png';
-import card2 from './assets/0d238c675ab28f5a142484dbc05c3dabe462d224.png';
-import card3 from './assets/6c664505e8723ba8b5c03cfc3244241b494bb20f.png';
-import card4 from './assets/41777dcdf1bba17b75c41f4bffbcd17015fe3ed6.png';
-import card5 from './assets/ac8b38fa5210048e6e1fdef4527354e87fe8729b.png';
-import card6 from './assets/b8bf007703495550c0213c86494d6c49b49e80e9.png';
-import card7 from './assets/eaeac7278b1ca96306fbc0f125cec9f28569e31f.png';
+const card1 = 'https://files.catbox.moe/kixh2j.png';
+const card2 = 'https://files.catbox.moe/lq17t3.png';
+const card3 = 'https://files.catbox.moe/n6n8sn.png';
+const card4 = 'https://files.catbox.moe/54s3x8.png';
+const card5 = 'https://files.catbox.moe/97a9l4.png';
+const card6 = 'https://files.catbox.moe/m7q5pl.png';
+const card7 = 'https://files.catbox.moe/2s78d7.png';
 
 // Custom 3D Panoramic Curved Gallery
 import ThreeDGallery from './components/ThreeDGallery';
