@@ -267,8 +267,8 @@ export default function App() {
                     style={{
                       position: 'absolute',
                       top: '-0.265em',
-                      left: '-0.21em',
-                      width: 'calc(100% + 0.42em)',
+                      left: '-0.2em',
+                      width: 'calc(100% + 0.4em)',
                       height: 'calc(100% + 0.53em)',
                       pointerEvents: 'none',
                       zIndex: 0,
