@@ -15,6 +15,7 @@ interface ThreeDGalleryProps {
 
 export const ThreeDGallery: React.FC<ThreeDGalleryProps> = ({ items }) => {
   const [isTabletOrMobile, setIsTabletOrMobile] = React.useState(false);
+  const [flippedCardId, setFlippedCardId] = React.useState<number | null>(null);
 
   React.useEffect(() => {
     const media = window.matchMedia('(max-width: 991px)');
@@ -24,6 +25,14 @@ export const ThreeDGallery: React.FC<ThreeDGalleryProps> = ({ items }) => {
     return () => media.removeEventListener('change', listener);
   }, []);
 
+  // Close/flip back card when clicking anywhere outside
+  React.useEffect(() => {
+    const handleOutsideClick = () => {
+      setFlippedCardId(null);
+    };
+    window.addEventListener('click', handleOutsideClick);
+    return () => window.removeEventListener('click', handleOutsideClick);
+  }, []);
 
   // Percentage-based fluid design tokens ensuring exact 10px spacing and perfect scale
   const layouts = [
@@ -97,7 +106,8 @@ export const ThreeDGallery: React.FC<ThreeDGalleryProps> = ({ items }) => {
               display: 'flex',
               gap: '4px', // 4px spacing between cards on mobile/tablet
               width: 'max-content',
-              animation: 'marqueeMobile 16s linear infinite',
+              animation: 'marqueeMobile 10s linear infinite', // Faster mobile animation (10s instead of 16s)
+              animationPlayState: flippedCardId !== null ? 'paused' : 'running', // Pauses ONLY when card is flipped
               transformStyle: 'preserve-3d',
             }}
           >
@@ -130,6 +140,8 @@ export const ThreeDGallery: React.FC<ThreeDGalleryProps> = ({ items }) => {
                     description={card.description}
                     width="100%"
                     height="100%"
+                    isFlipped={flippedCardId === card.id}
+                    onFlip={(flipped) => setFlippedCardId(flipped ? card.id : null)}
                   />
                 </div>
               );
@@ -143,6 +155,7 @@ export const ThreeDGallery: React.FC<ThreeDGalleryProps> = ({ items }) => {
               display: 'flex',
               gap: '6px',
               width: 'max-content',
+              animationPlayState: flippedCardId !== null ? 'paused' : 'running', // Pauses ONLY when card is flipped
               transformStyle: 'preserve-3d',
             }}
           >
@@ -192,6 +205,8 @@ export const ThreeDGallery: React.FC<ThreeDGalleryProps> = ({ items }) => {
                       description={card.description}
                       width="100%"
                       height="100%"
+                      isFlipped={flippedCardId === card.id}
+                      onFlip={(flipped) => setFlippedCardId(flipped ? card.id : null)}
                     />
                   </div>
                 </div>

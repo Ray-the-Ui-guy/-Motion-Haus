@@ -1,4 +1,3 @@
-import { useState } from 'react';
 
 interface TickerCardProps {
   id: number;
@@ -8,6 +7,8 @@ interface TickerCardProps {
   description: string;
   width: string;
   height: string;
+  isFlipped: boolean;
+  onFlip: (flipped: boolean) => void;
 }
 
 export default function TickerCard({
@@ -18,16 +19,16 @@ export default function TickerCard({
   description,
   width,
   height,
+  isFlipped,
+  onFlip,
 }: TickerCardProps) {
-  const [isFlipped, setIsFlipped] = useState(false);
-
   return (
     <div
       className="ticker-card-container group select-none cursor-pointer"
       data-id={id}
       onClick={(e) => {
         e.stopPropagation();
-        setIsFlipped(!isFlipped);
+        onFlip(!isFlipped);
       }}
       style={{
         width: width,

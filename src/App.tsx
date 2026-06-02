@@ -674,6 +674,7 @@ export default function App() {
               ]).map((t, idx) => (
                 <div
                   key={`t-left-${idx}`}
+                  className="hover-card-animate"
                   style={{
                     background: '#000000',
                     border: '1px solid rgba(115, 115, 115, 0.25)',
@@ -708,6 +709,7 @@ export default function App() {
               ]).map((t, idx) => (
                 <div
                   key={`t-right-${idx}`}
+                  className="hover-card-animate"
                   style={{
                     background: '#000000',
                     border: '1px solid rgba(115, 115, 115, 0.25)',

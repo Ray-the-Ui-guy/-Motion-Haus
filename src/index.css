@@ -507,11 +507,7 @@ body {
   display: flex;
   gap: 6px;
   width: max-content;
-  animation: marqueeDesktop 28s linear infinite;
-}
-
-.gallery-track-desktop:hover {
-  animation-play-state: paused;
+  animation: marqueeDesktop 16s linear infinite;
 }
 
 @keyframes marqueeDesktop {
