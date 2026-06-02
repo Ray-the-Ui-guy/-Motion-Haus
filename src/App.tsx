@@ -266,8 +266,8 @@ export default function App() {
                     style={{
                       position: 'absolute',
                       top: '-0.265em',
-                      left: '-0.18em',
-                      width: 'calc(100% + 0.36em)',
+                      left: '-0.17em',
+                      width: 'calc(100% + 0.34em)',
                       height: 'calc(100% + 0.53em)',
                       pointerEvents: 'none',
                       zIndex: 0,
@@ -743,7 +743,7 @@ export default function App() {
             width: '100%',
             maxWidth: 'calc(100% - 116px)',
             margin: '20px auto 0',
-            padding: '40px 40px 10px',
+            padding: '40px 40px 20px',
             position: 'relative',
             zIndex: 10,
             borderTop: '1px dashed rgba(115, 115, 115, 0.25)',
@@ -809,7 +809,7 @@ export default function App() {
             width: '100%',
             maxWidth: 'calc(100% - 160px)',
             margin: '0 auto',
-            padding: '10px 20px 24px',
+            padding: '20px 20px 24px',
             borderTop: '1px dashed rgba(115, 115, 115, 0.25)',
             position: 'relative',
             zIndex: 10,
@@ -825,19 +825,7 @@ export default function App() {
           <div style={{ width: '100%', height: '1.2px', background: 'rgba(115, 115, 115, 0.15)' }} />
 
           {/* Bottom Bar: Copyright and the Developer Ritual */}
-          <div
-            style={{
-              display: 'flex',
-              width: '100%',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              flexWrap: 'wrap',
-              gap: '16px',
-              fontSize: '12px',
-              color: '#737373',
-              fontFamily: "'Inter Tight', sans-serif",
-            }}
-          >
+          <div className="footer-bottom-bar">
             <span>© 2026 MOTION HAUS. ALL RIGHTS RESERVED.</span>
 
             {/* The Ritual: Portfolio link of Heritage Isaac */}
