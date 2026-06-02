@@ -297,15 +297,16 @@ body {
 @media (max-width: 991px) {
   .hero-headline {
     font-size: clamp(14px, 3.4vw, 36px) !important;
-    gap: 12px !important;
+    gap: 6px !important;
+    line-height: 1.1 !important;
   }
 }
 
 @media (max-width: 580px) {
   .hero-headline {
     font-size: clamp(10px, 3.8vw, 20px) !important;
-    line-height: 1.2 !important;
-    gap: 8px !important;
+    line-height: 1.0 !important;
+    gap: 4px !important;
   }
 }
 
@@ -371,6 +372,90 @@ body {
     align-items: center !important;
     text-align: center !important;
     gap: 12px !important;
+  }
+}
+
+/* Responsive Blueprint Guidelines */
+.bp-left-line {
+  left: 58px;
+}
+.bp-right-line {
+  right: 58px;
+}
+.bp-horizontal-line {
+  top: 58px;
+}
+.bp-dot-left {
+  left: 52px;
+  top: 52px;
+}
+.bp-dot-right {
+  right: 52px;
+  top: 52px;
+}
+
+@media (max-width: 991px) {
+  .bp-left-line {
+    left: 29px !important;
+  }
+  .bp-right-line {
+    right: 29px !important;
+  }
+  .bp-horizontal-line {
+    top: 29px !important;
+  }
+  .bp-dot-left {
+    left: 23px !important;
+    top: 23px !important;
+  }
+  .bp-dot-right {
+    right: 23px !important;
+    top: 23px !important;
+  }
+}
+
+/* Responsive Containers and Text elements */
+.hero-header {
+  padding-top: 120px;
+}
+.hero-content-container {
+  max-width: calc(100% - 116px);
+}
+.hero-tagline {
+  font-size: clamp(14px, 1.5vw, 18px);
+  line-height: 32px;
+  max-width: 668px;
+}
+.why-section-container {
+  max-width: calc(100% - 160px);
+}
+.cta-section-container {
+  max-width: calc(100% - 116px);
+}
+.footer-container {
+  max-width: calc(100% - 160px);
+}
+
+@media (max-width: 991px) {
+  .hero-header {
+    padding-top: 32px !important;
+  }
+  .hero-content-container {
+    max-width: calc(100% - 58px) !important;
+  }
+  .hero-tagline {
+    font-size: clamp(11px, 3.2vw, 14px) !important;
+    line-height: 20px !important;
+    max-width: 80% !important;
+  }
+  .why-section-container {
+    max-width: calc(100% - 80px) !important;
+  }
+  .cta-section-container {
+    max-width: calc(100% - 58px) !important;
+  }
+  .footer-container {
+    max-width: calc(100% - 80px) !important;
   }
 }
 

@@ -112,17 +112,17 @@ export default function App() {
         </div>
         {/* ── Technical Grid Lines and Dots (Blueprint Overlay - Spanning the whole page) ── */}
         {/* Top Left Dot */}
-        <div className="grid-corner-dot" style={{ left: '52px', top: '52px' }} />
+        <div className="grid-corner-dot bp-dot-left" />
         {/* Top Right Dot */}
-        <div className="grid-corner-dot" style={{ right: '52px', top: '52px' }} />
+        <div className="grid-corner-dot bp-dot-right" />
 
         {/* Vertical Blueprint Dashed Lines */}
         <div
+          className="bp-left-line"
           style={{
             position: 'absolute',
             width: '1.2px',
             height: '100%',
-            left: '58px',
             top: 0,
             backgroundImage: 'linear-gradient(to bottom, rgba(115, 115, 115, 0.4) 0px, rgba(115, 115, 115, 0.4) 18px, transparent 18px, transparent 24px)',
             backgroundSize: '1.2px 24px',
@@ -132,11 +132,11 @@ export default function App() {
           }}
         />
         <div
+          className="bp-right-line"
           style={{
             position: 'absolute',
             width: '1.2px',
             height: '100%',
-            right: '58px',
             top: 0,
             backgroundImage: 'linear-gradient(to bottom, rgba(115, 115, 115, 0.4) 0px, rgba(115, 115, 115, 0.4) 18px, transparent 18px, transparent 24px)',
             backgroundSize: '1.2px 24px',
@@ -148,12 +148,12 @@ export default function App() {
 
         {/* Horizontal Blueprint Dashed Lines */}
         <div
+          className="bp-horizontal-line"
           style={{
             position: 'absolute',
             height: '1.2px',
             width: '100%',
             left: 0,
-            top: '58px',
             backgroundImage: 'linear-gradient(to right, rgba(115, 115, 115, 0.4) 0px, rgba(115, 115, 115, 0.4) 18px, transparent 18px, transparent 24px)',
             backgroundSize: '24px 1.2px',
             backgroundRepeat: 'repeat-x',
@@ -175,13 +175,13 @@ export default function App() {
         {/* ── 1. HERO SECTION (With Restricted Custom Background Image) ── */}
         <header
           id="hero"
+          className="hero-header"
           style={{
             width: '100%',
             position: 'relative',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            padding: '120px 0 0',
             overflow: 'hidden',
           }}
         >
@@ -200,6 +200,7 @@ export default function App() {
 
           {/* Hero Content Section */}
           <div
+            className="hero-content-container"
             style={{
               display: 'flex',
               flexDirection: 'column',
@@ -207,7 +208,6 @@ export default function App() {
               justifyContent: 'center',
               textAlign: 'center',
               width: '100%',
-              maxWidth: 'calc(100% - 116px)',
               margin: '0 auto',
               zIndex: 5,
               position: 'relative',
@@ -300,15 +300,12 @@ export default function App() {
 
             {/* Tagline */}
             <p
-              className="font-body"
+              className="font-body hero-tagline"
               style={{
                 fontFamily: "'Inter Tight', sans-serif",
-                fontSize: 'clamp(14px, 1.5vw, 18px)',
                 fontWeight: 400,
-                lineHeight: '32px',
                 letterSpacing: '0.56px',
                 color: '#BBBBBB',
-                maxWidth: '668px',
                 margin: '0 auto 24px',
               }}
             >
@@ -327,9 +324,9 @@ export default function App() {
         {/* ── 2. WHY MOTION HAUS SECTION (Sleek Dark Theme) ── */}
         <section
           id="why"
+          className="why-section-container"
           style={{
             width: '100%',
-            maxWidth: 'calc(100% - 160px)',
             margin: '0 auto 40px',
             padding: '30px 20px',
             position: 'relative',
@@ -739,9 +736,9 @@ export default function App() {
         {/* ── 6. CALL TO ACTION (CTA) SECTION before Footer ── */}
         <section
           id="cta"
+          className="cta-section-container"
           style={{
             width: '100%',
-            maxWidth: 'calc(100% - 116px)',
             margin: '20px auto 0',
             padding: '40px 40px 20px',
             position: 'relative',
@@ -805,9 +802,9 @@ export default function App() {
 
         {/* ── 7. PREMIUM FOOTER ── */}
         <footer
+          className="footer-container"
           style={{
             width: '100%',
-            maxWidth: 'calc(100% - 160px)',
             margin: '0 auto',
             padding: '20px 20px 24px',
             borderTop: '1px dashed rgba(115, 115, 115, 0.25)',
