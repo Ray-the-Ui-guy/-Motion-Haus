@@ -1,9 +1,9 @@
 <svg width="23" height="36" viewBox="0 0 23 36" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g filter="url(#filter0_ii_573_65)">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M7.77813 0.00577509L21.3267 0.116144L13.7389 11.6195H23L5.37662 34.6371L2.56539 36L1.43337 35.443L6.16897 20.8006H0L4.4488 1.36549L7.26003 0L7.77813 0.00577509Z" fill="#000000"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M7.77813 0.00577509L21.3267 0.116144L13.7389 11.6195H23L5.37662 34.6371L2.56539 36L1.43337 35.443L6.16897 20.8006H0L4.4488 1.36549L7.26003 0L7.77813 0.00577509Z" fill="url(#paint0_linear_573_65)"/>
 </g>
 <g filter="url(#filter1_ii_573_65)">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M20.1595 0.729956L7.77467 0.62793L3.60938 18.8105H9.85435L4.85837 34.2653L21.7185 12.2442H12.5605L20.1595 0.729956Z" fill="#000000"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M20.1595 0.729956L7.77467 0.62793L3.60938 18.8105H9.85435L4.85837 34.2653L21.7185 12.2442H12.5605L20.1595 0.729956Z" fill="url(#paint1_linear_573_65)"/>
 </g>
 <defs>
 <filter id="filter0_ii_573_65" x="0" y="-1" width="23" height="39" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
@@ -38,5 +38,13 @@
 <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.6 0"/>
 <feBlend mode="normal" in2="effect1_innerShadow_573_65" result="effect2_innerShadow_573_65"/>
 </filter>
+<linearGradient id="paint0_linear_573_65" x1="11.5" y1="0" x2="11.5" y2="36" gradientUnits="userSpaceOnUse">
+<stop stop-color="white"/>
+<stop offset="1" stop-color="#D4D4D8"/>
+</linearGradient>
+<linearGradient id="paint1_linear_573_65" x1="12.7524" y1="33.8997" x2="4.30968" y2="2.91213" gradientUnits="userSpaceOnUse">
+<stop stop-color="white"/>
+<stop offset="1" stop-color="#D4D4D8"/>
+</linearGradient>
 </defs>
 </svg>

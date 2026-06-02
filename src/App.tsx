@@ -1,58 +1,69 @@
 import { useState, useEffect } from 'react';
-import TickerCard from './components/TickerCard';
 import Loader from './components/Loader';
-import BorderGlow from './components/BorderGlow';
-import bgRough from './assets/e5f55fa59bbd791ae3b6fa5991966451f550c574.png';
+import GlowingButton from './components/GlowingButton';
+import heroBg from './assets/hero section (1).png';
+import badgeIcon from './assets/Frame 2087328322.svg';
+import creativeBorder from './assets/Border.svg';
+import card1 from './assets/eb7d1248ca9801e1537108751909d610541bd6d7.png';
+import card2 from './assets/0d238c675ab28f5a142484dbc05c3dabe462d224.png';
+import card3 from './assets/6c664505e8723ba8b5c03cfc3244241b494bb20f.png';
+import card4 from './assets/41777dcdf1bba17b75c41f4bffbcd17015fe3ed6.png';
+import card5 from './assets/ac8b38fa5210048e6e1fdef4527354e87fe8729b.png';
+import card6 from './assets/b8bf007703495550c0213c86494d6c49b49e80e9.png';
+import card7 from './assets/eaeac7278b1ca96306fbc0f125cec9f28569e31f.png';
+
+// Custom 3D Panoramic Curved Gallery
+import ThreeDGallery from './components/ThreeDGallery';
 
 const cardData = [
   {
     id: 1,
-    imageUrl: '/fluffy_cat.png',
-    title: 'Automated Leads',
-    metric: '+412%',
-    description: 'Instantly capture and segment inbound organic traffic using conversational bots.',
+    imageUrl: card1,
+    title: 'Project: Speed Telemetry',
+    metric: 'S-01',
+    description: 'Hyper-detailed athlete motion tracking, vector overlay overlays, and futuristic HUD graphics captured in high-contrast low light.',
   },
   {
     id: 2,
-    imageUrl: '/basketball_shoe.png',
-    title: 'Conversion Boost',
-    metric: '+340%',
-    description: 'Optimize cart checkouts and trigger personalized interactive videos in real-time.',
+    imageUrl: card2,
+    title: 'Project: Court Action',
+    metric: 'S-02',
+    description: 'Cinematic sports showcase featuring slow-motion ball trajectories, dynamic hoop physics, and multi-angle camera rigs.',
   },
   {
     id: 3,
-    imageUrl: '/metallic_bubble.png',
-    title: 'Instant Response',
-    metric: '< 1.2s',
-    description: 'Zero latency interactive sales agents handling thousands of queries simultaneously.',
+    imageUrl: card3,
+    title: 'Project: Fluid Metals',
+    metric: 'S-03',
+    description: 'High-end 3D CGI simulating realistic chrome surfaces, macro fluid bubbles, and dynamic ambient light refractions.',
   },
   {
     id: 4,
-    imageUrl: '/basketball_hoop.png',
-    title: 'Hyper Engagement',
-    metric: '92.4%',
-    description: 'Maintain attention rates with ultra-realistic video and product showcase modals.',
+    imageUrl: card4,
+    title: 'Project: Aero Kicks',
+    metric: 'S-04',
+    description: 'Floating commercial footwear showcase highlighting intricate materials, rotating platform layouts, and high-fashion backdrops.',
   },
   {
     id: 5,
-    imageUrl: '/player_flat.png',
-    title: 'Traffic Scale',
-    metric: '84k+',
-    description: 'Scalable robot infrastructure handling extreme spikes during major global product drops.',
+    imageUrl: card5,
+    title: 'Project: Neon Portrait',
+    metric: 'S-05',
+    description: 'Sleek cyberpunk editorial exploring high-contrast color tones, soft dreamlike volumetric smoke, and high-fashion aesthetics.',
   },
   {
     id: 6,
-    imageUrl: '/athlete_bold.png',
-    title: 'AOV Multiplier',
-    metric: '5.8x',
-    description: 'Maximize average order value through intelligent checkout upsells customized in real-time.',
+    imageUrl: card6,
+    title: 'Project: Fluffy Motion',
+    metric: 'S-06',
+    description: 'Charming pet studio product shoot emphasizing high-speed shutter captures, fine hair details, and warm lighting setups.',
   },
   {
     id: 7,
-    imageUrl: '/surreal_portrait.png',
-    title: 'Global Presence',
-    metric: '120+',
-    description: 'Deploy interactive sales agents in over 120 languages with localized real-time speech.',
+    imageUrl: card7,
+    title: 'Project: Star Map HUD',
+    metric: 'S-07',
+    description: 'Deep-space digital viewfinder telemetry HUD rendering vector star trails, coordinates, and complex system controls.',
   },
 ];
 
@@ -85,43 +96,28 @@ export default function App() {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          justifyContent: 'space-between',
-          padding: '24px 0',
+          padding: '24px 0 0',
           opacity: loading ? 0 : 1,
           transition: 'opacity 0.4s ease-in-out',
         }}
       >
-        {/* ── Background Rough texture Overlay (Masked strictly under the center ambient glow) ── */}
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            backgroundImage: `url(${bgRough})`,
-            backgroundSize: 'cover',
-            backgroundColor: 'rgba(217, 217, 217, 0.02)',
-            backgroundBlendMode: 'soft-light',
-            opacity: 0.5,
-            pointerEvents: 'none',
-            zIndex: 1,
-            maskImage: 'radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 65%)',
-            WebkitMaskImage: 'radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 65%)',
-          }}
-        />
-
-        {/* ── Ambient Glow Light Backdrop ── */}
-        <div className="ambient-glow" />
-
-        {/* ── Technical Grid Lines and Dots (Blueprint Overlay) ── */}
+        {/* Invisible pre-loading cache container to pre-load all high-fidelity images instantly */}
+        <div style={{ position: 'absolute', width: 0, height: 0, overflow: 'hidden', opacity: 0, pointerEvents: 'none' }} aria-hidden="true">
+          <img src={card1} alt="" />
+          <img src={card2} alt="" />
+          <img src={card3} alt="" />
+          <img src={card4} alt="" />
+          <img src={card5} alt="" />
+          <img src={card6} alt="" />
+          <img src={card7} alt="" />
+        </div>
+        {/* ── Technical Grid Lines and Dots (Blueprint Overlay - Spanning the whole page) ── */}
         {/* Top Left Dot */}
         <div className="grid-corner-dot" style={{ left: '52px', top: '52px' }} />
         {/* Top Right Dot */}
         <div className="grid-corner-dot" style={{ right: '52px', top: '52px' }} />
-        {/* Bottom Left Dot */}
-        <div className="grid-corner-dot" style={{ left: '52px', bottom: '52px' }} />
-        {/* Bottom Right Dot */}
-        <div className="grid-corner-dot" style={{ right: '52px', bottom: '52px' }} />
 
-        {/* Vertical Blueprint Dashed Lines (Exact 18px dash, 6px gap, 1.2px width, 0.4 opacity) */}
+        {/* Vertical Blueprint Dashed Lines */}
         <div
           style={{
             position: 'absolute',
@@ -133,6 +129,7 @@ export default function App() {
             backgroundSize: '1.2px 24px',
             backgroundRepeat: 'repeat-y',
             pointerEvents: 'none',
+            zIndex: 1,
           }}
         />
         <div
@@ -146,10 +143,11 @@ export default function App() {
             backgroundSize: '1.2px 24px',
             backgroundRepeat: 'repeat-y',
             pointerEvents: 'none',
+            zIndex: 1,
           }}
         />
 
-        {/* Horizontal Blueprint Dashed Lines (Exact 18px dash, 6px gap, 1.2px height, 0.4 opacity) */}
+        {/* Horizontal Blueprint Dashed Lines */}
         <div
           style={{
             position: 'absolute',
@@ -161,197 +159,796 @@ export default function App() {
             backgroundSize: '24px 1.2px',
             backgroundRepeat: 'repeat-x',
             pointerEvents: 'none',
+            zIndex: 1,
           }}
         />
-        <div
+
+
+        {/* Invisible SVG definition for the responsive horizontal hourglass clip path */}
+        <svg width="0" height="0" style={{ position: 'absolute', pointerEvents: 'none' }}>
+          <defs>
+            <clipPath id="hourglass-clip" clipPathUnits="objectBoundingBox">
+              <path d="M 0 0 Q 0.5 0.18, 1 0 L 1 1 Q 0.5 0.82, 0 1 Z" />
+            </clipPath>
+          </defs>
+        </svg>
+
+        {/* ── 1. HERO SECTION (With Restricted Custom Background Image) ── */}
+        <header
+          id="hero"
           style={{
-            position: 'absolute',
-            height: '1.2px',
             width: '100%',
-            left: 0,
-            bottom: '58px',
-            backgroundImage: 'linear-gradient(to right, rgba(115, 115, 115, 0.4) 0px, rgba(115, 115, 115, 0.4) 18px, transparent 18px, transparent 24px)',
-            backgroundSize: '24px 1.2px',
-            backgroundRepeat: 'repeat-x',
-            pointerEvents: 'none',
-          }}
-        />
-
-
-        {/* ── Main Hero Content ── */}
-        <section
-          style={{
+            position: 'relative',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            justifyContent: 'center',
-            padding: '60px 24px',
-            textAlign: 'center',
-            maxWidth: '1044px',
-            zIndex: 5,
+            padding: '120px 0 0',
+            overflow: 'hidden',
           }}
         >
-          {/* Dynamic AI Badge */}
+          {/* Custom background image - strictly locked to the Hero section */}
           <div
-            className="font-body"
             style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-              background: 'rgba(51, 92, 255, 0.1)',
-              border: '1px solid rgba(51, 92, 255, 0.3)',
-              borderRadius: '200px',
-              padding: '6px 16px',
-              fontSize: '12px',
-              fontWeight: 500,
-              letterSpacing: '1px',
-              color: '#335CFF',
-              textTransform: 'uppercase',
-              marginBottom: '28px',
-              boxShadow: '0 0 15px rgba(51, 92, 255, 0.2)',
+              position: 'absolute',
+              inset: 0,
+              backgroundImage: `url("${heroBg}")`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              pointerEvents: 'none',
+              zIndex: 0,
             }}
-          >
-            <span style={{ width: '6px', height: '6px', background: '#335CFF', borderRadius: '50%' }} />
-            Creative Agency Active
-          </div>
+          />
 
-          {/* Headline (Formatted strictly in two lines, fully capitalized, custom border for CREATIVE) */}
-          <h1
-            className="font-display"
+          {/* Hero Content Section */}
+          <div
             style={{
-              fontFamily: "'VC Nudge Trial', 'Syne', sans-serif",
-              fontSize: 'clamp(24px, 4.2vw, 68px)',
-              fontWeight: 800,
-              lineHeight: '1.2',
-              letterSpacing: '1.8px',
-              textTransform: 'uppercase',
-              maxWidth: '1044px',
-              margin: '0 auto 28px',
-              color: '#FBFBFBB2',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
-              gap: '12px',
+              justifyContent: 'center',
+              textAlign: 'center',
+              width: '100%',
+              maxWidth: 'calc(100% - 116px)',
+              margin: '0 auto',
+              zIndex: 5,
+              position: 'relative',
             }}
           >
-            <span style={{ display: 'block', width: '100%' }}>
-              A{' '}
-              <span
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  padding: '2px 16px',
-                  border: '1.5px solid #FFFFFF',
-                  borderRadius: '4px',
-                  color: '#FFFFFF',
-                  fontSize: '0.95em',
-                  margin: '0 8px',
-                  textShadow: '0 0 20px rgba(255, 255, 255, 0.25)',
-                }}
-              >
-                CREATIVE
-              </span>{' '}
-              Video Creation Agency
-            </span>
-            <span style={{ display: 'block', width: '100%', color: '#FBFBFBB2' }}>
-              that drives engagement
-            </span>
-          </h1>
-
-          {/* Tagline / Subheading */}
-          <p
-            className="font-body"
-            style={{
-              fontFamily: "'Inter Tight', sans-serif",
-              fontSize: 'clamp(14px, 1.5vw, 18px)',
-              fontWeight: 400,
-              lineHeight: '32px',
-              letterSpacing: '0.56px',
-              color: '#BBBBBB',
-              maxWidth: '668px',
-              margin: '0 auto 40px',
-            }}
-          >
-            We enhances businesses' ability to boost customer engagement through the integration of personalized and interactive elements into their videos.
-          </p>
-
-          {/* Interactive BorderGlow Action Button */}
-          <BorderGlow
-            edgeSensitivity={35}
-            glowColor="229 100 60"
-            backgroundColor="#222222"
-            borderRadius={1000}
-            glowRadius={32}
-            glowIntensity={1.8}
-            colors={['#335CFF', '#4E98FF', '#002BFF']}
-            className="glowing-btn-container"
-          >
-            <button
-              className="font-body"
+            {/* Viewfinder Badge */}
+            <img
+              src={badgeIcon}
+              alt="HUD Badge Icon"
               style={{
-                background: 'transparent',
-                border: 'none',
-                padding: '16px 42px',
-                fontFamily: "'Inter Tight', sans-serif",
-                fontWeight: 400,
-                fontSize: '24px',
-                lineHeight: '1.65',
-                color: '#FFFFFF',
-                cursor: 'pointer',
+                width: '23px',
+                height: '36px',
+                marginBottom: '32px',
                 display: 'block',
-                position: 'relative',
-                zIndex: 2,
-                borderRadius: '1000px',
+              }}
+            />
+
+            {/* Headline */}
+            <h1
+              className="font-display hero-headline"
+              style={{
+                fontFamily: "'VC Nudge Trial', 'Syne', sans-serif",
+                fontSize: 'clamp(20px, 3.4vw, 54px)',
+                fontWeight: 800,
+                lineHeight: '1.2',
+                letterSpacing: '2.5px',
+                textTransform: 'uppercase',
+                maxWidth: '1044px',
+                margin: '0 auto 16px',
+                color: '#FBFBFBB2',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '16px',
+                width: '100%',
               }}
             >
-              Generate Cards
-            </button>
-          </BorderGlow>
+              <div className="headline-line-1" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', gap: '14px 8px', width: '100%' }}>
+                <span>A</span>
+                <span
+                  style={{
+                    position: 'relative',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    padding: '0.1em 0.4em',
+                    margin: '0 2px',
+                    verticalAlign: 'middle',
+                  }}
+                >
+                  <img
+                    src={creativeBorder}
+                    alt=""
+                    style={{
+                      position: 'absolute',
+                      top: '-0.45em',
+                      left: 'calc(-1.35em + 35.8px)',
+                      width: 'calc(100% + 2.7em - 71.6px)',
+                      height: 'calc(100% + 0.9em)',
+                      pointerEvents: 'none',
+                      objectFit: 'fill',
+                      zIndex: 0,
+                    }}
+                  />
+                  <span
+                    style={{
+                      color: '#FFFFFF',
+                      position: 'relative',
+                      zIndex: 2,
+                      textShadow: '0 0 20px rgba(255, 255, 255, 0.25)',
+                    }}
+                  >
+                    CREATIVE
+                  </span>
+                </span>
+                <span>Video Creation Agency</span>
+              </div>
+              <span className="headline-line-2" style={{ display: 'block', width: '100%', color: '#FBFBFBB2', textShadow: 'none' }}>
+                that drives engagement
+              </span>
+            </h1>
+
+            {/* Tagline */}
+            <p
+              className="font-body"
+              style={{
+                fontFamily: "'Inter Tight', sans-serif",
+                fontSize: 'clamp(14px, 1.5vw, 18px)',
+                fontWeight: 400,
+                lineHeight: '32px',
+                letterSpacing: '0.56px',
+                color: '#BBBBBB',
+                maxWidth: '668px',
+                margin: '0 auto 24px',
+              }}
+            >
+              We enhances businesses' ability to boost customer engagement through the integration of personalized and interactive elements into their videos.
+            </p>
+
+            {/* CTA Button */}
+            <GlowingButton>Generate Cards</GlowingButton>
+          </div>
+
+          {/* 3D Panoramic Curved Sticky Scroll Gallery */}
+          <ThreeDGallery items={cardData} />
+        </header>
+
+
+        {/* ── 2. WHY MOTION HAUS SECTION (Sleek Dark Theme) ── */}
+        <section
+          id="why"
+          style={{
+            width: '100%',
+            maxWidth: 'calc(100% - 160px)',
+            margin: '0 auto 40px',
+            padding: '30px 20px',
+            position: 'relative',
+            zIndex: 10,
+            borderTop: '1px dashed rgba(115, 115, 115, 0.25)',
+          }}
+        >
+          <span
+            className="font-body"
+            style={{
+              fontSize: '11px',
+              fontWeight: 600,
+              color: '#335CFF',
+              textTransform: 'uppercase',
+              letterSpacing: '3px',
+              display: 'block',
+              marginBottom: '16px',
+              textAlign: 'center',
+            }}
+          >
+            our core edges
+          </span>
+
+          <h2
+            className="font-display"
+            style={{
+              fontFamily: "'VC Nudge Trial', sans-serif",
+              fontSize: 'clamp(24px, 3.2vw, 42px)',
+              fontWeight: 800,
+              letterSpacing: '1.5px',
+              textTransform: 'uppercase',
+              textAlign: 'center',
+              marginBottom: '60px',
+              color: '#FFFFFF',
+            }}
+          >
+            Why Motion Haus
+          </h2>
+
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+              gap: '24px',
+              width: '100%',
+            }}
+          >
+            {[
+              {
+                num: '01',
+                title: 'High-Speed CGI Pipeline',
+                desc: 'Real-time multi-threaded rendering engine that delivers stunning, immersive cinematic motion graphics in a fraction of traditional speeds.',
+              },
+              {
+                num: '02',
+                title: 'Conversational Video Agents',
+                desc: 'We embed responsive smart bots directly into choice-driven interactive video templates, closing customer leads 24/7.',
+              },
+              {
+                num: '03',
+                title: 'Proven Conversion Multiplier',
+                desc: 'Our motion directional systems drive visual authority, netting our clients an average of +340% sales conversion and 5.8x AOV increases.',
+              },
+            ].map((feature, i) => (
+              <div
+                key={i}
+                style={{
+                  background: 'rgba(255, 255, 255, 0.01)',
+                  border: '1px solid rgba(115, 115, 115, 0.12)',
+                  borderRadius: '16px',
+                  padding: '36px',
+                  transition: 'all 0.3s ease',
+                  position: 'relative',
+                  cursor: 'default',
+                }}
+                onMouseEnter={e => {
+                  const el = e.currentTarget as HTMLElement;
+                  el.style.borderColor = 'rgba(51, 92, 255, 0.4)';
+                  el.style.background = 'rgba(51, 92, 255, 0.02)';
+                }}
+                onMouseLeave={e => {
+                  const el = e.currentTarget as HTMLElement;
+                  el.style.borderColor = 'rgba(115, 115, 115, 0.12)';
+                  el.style.background = 'rgba(255, 255, 255, 0.01)';
+                }}
+              >
+                <span
+                  style={{
+                    fontSize: '12px',
+                    fontFamily: "'VC Nudge Trial', sans-serif",
+                    color: '#335CFF',
+                    display: 'block',
+                    marginBottom: '20px',
+                  }}
+                >
+                  {feature.num} // SPEC
+                </span>
+                <h3
+                  className="font-display"
+                  style={{
+                    fontSize: '18px',
+                    fontWeight: 700,
+                    color: '#FFFFFF',
+                    marginBottom: '16px',
+                    textTransform: 'uppercase',
+                  }}
+                >
+                  {feature.title}
+                </h3>
+                <p
+                  className="font-body"
+                  style={{
+                    fontSize: '14px',
+                    color: '#BBBBBB',
+                    lineHeight: '1.6',
+                  }}
+                >
+                  {feature.desc}
+                </p>
+              </div>
+            ))}
+          </div>
         </section>
 
 
-      {/* ── Auto-Scrolling Marquee Ticker ── */}
-      <section
-        className="ticker-container"
-        style={{
-          width: '100%',
-          overflow: 'hidden',
-          padding: '40px 0',
-          position: 'relative',
-          zIndex: 10,
-        }}
-      >
-        <div className="ticker-track">
-          {/* Render first set of cards */}
-          {cardData.map(card => (
-            <TickerCard
-              key={`front-${card.id}`}
-              id={card.id}
-              imageUrl={card.imageUrl}
-              title={card.title}
-              metric={card.metric}
-              description={card.description}
-              width="210px"
-              height="460px"
-            />
+        {/* ── 3. SERVICES SECTION (Capabilities) ── */}
+        <section
+          id="services"
+          style={{
+            width: '100%',
+            maxWidth: 'calc(100% - 160px)',
+            margin: '40px auto',
+            padding: '60px 20px',
+            position: 'relative',
+            zIndex: 10,
+            borderTop: '1px dashed rgba(115, 115, 115, 0.25)',
+          }}
+        >
+          <span
+            className="font-body"
+            style={{
+              fontSize: '11px',
+              fontWeight: 600,
+              color: '#335CFF',
+              textTransform: 'uppercase',
+              letterSpacing: '3px',
+              display: 'block',
+              marginBottom: '16px',
+              textAlign: 'center',
+            }}
+          >
+            capabilities & services
+          </span>
+
+          <h2
+            className="font-display"
+            style={{
+              fontFamily: "'VC Nudge Trial', sans-serif",
+              fontSize: 'clamp(24px, 3.2vw, 42px)',
+              fontWeight: 800,
+              letterSpacing: '1.5px',
+              textTransform: 'uppercase',
+              textAlign: 'center',
+              marginBottom: '60px',
+              color: '#FFFFFF',
+            }}
+          >
+            Capabilities
+          </h2>
+
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+              gap: '24px',
+              width: '100%',
+            }}
+          >
+            {[
+              {
+                num: '01',
+                title: 'Cinematic 3D Motion',
+                desc: 'State-of-the-art simulated physics, complex particle effects, and high-fidelity product dynamics built inside cinema rendering environments.',
+              },
+              {
+                num: '02',
+                title: 'Blueprint Visual HUD',
+                desc: 'Premium sci-fi viewport interfaces, futuristic vector guide-lines, and cinematic tech graphics layered perfectly onto video sequences.',
+              },
+              {
+                num: '03',
+                title: 'Interactive Storytelling',
+                desc: 'Custom user-driven branching narrative frameworks that dynamically hook attention and dramatically accelerate consumer conversions.',
+              },
+            ].map((service, i) => (
+              <div
+                key={i}
+                className="group"
+                style={{
+                  background: 'rgba(255, 255, 255, 0.01)',
+                  border: '1px solid rgba(115, 115, 115, 0.15)',
+                  borderRadius: '16px',
+                  padding: '36px',
+                  transition: 'all 0.3s ease',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  cursor: 'pointer',
+                }}
+                onMouseEnter={e => {
+                  const el = e.currentTarget as HTMLElement;
+                  el.style.borderColor = '#335CFF';
+                  el.style.background = 'rgba(51, 92, 255, 0.03)';
+                  el.style.boxShadow = '0 8px 32px rgba(51, 92, 255, 0.1)';
+                }}
+                onMouseLeave={e => {
+                  const el = e.currentTarget as HTMLElement;
+                  el.style.borderColor = 'rgba(115, 115, 115, 0.15)';
+                  el.style.background = 'rgba(255, 255, 255, 0.01)';
+                  el.style.boxShadow = 'none';
+                }}
+              >
+                <div
+                  style={{
+                    position: 'absolute',
+                    top: '16px',
+                    right: '16px',
+                    width: '6px',
+                    height: '6px',
+                    backgroundColor: '#335CFF',
+                    borderRadius: '50%',
+                    opacity: 0.8,
+                  }}
+                />
+
+                <span
+                  style={{
+                    fontSize: '12px',
+                    fontFamily: "'VC Nudge Trial', sans-serif",
+                    color: '#335CFF',
+                    display: 'block',
+                    marginBottom: '20px',
+                  }}
+                >
+                  {service.num} // SPEC
+                </span>
+
+                <h3
+                  className="font-display"
+                  style={{
+                    fontSize: '20px',
+                    fontWeight: 700,
+                    color: '#FFFFFF',
+                    marginBottom: '16px',
+                    textTransform: 'uppercase',
+                    letterSpacing: '1px',
+                  }}
+                >
+                  {service.title}
+                </h3>
+
+                <p
+                  className="font-body"
+                  style={{
+                    fontSize: '14px',
+                    color: '#BBBBBB',
+                    lineHeight: '1.6',
+                  }}
+                >
+                  {service.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+
+        {/* ── 4. TESTIMONIALS SECTION (Moving in Opposite Directions Automatically) ── */}
+        <section
+          id="testimonials"
+          style={{
+            width: '100%',
+            margin: '40px 0',
+            padding: '60px 0',
+            position: 'relative',
+            zIndex: 10,
+            borderTop: '1px dashed rgba(115, 115, 115, 0.25)',
+            overflow: 'hidden',
+          }}
+        >
+          <span
+            className="font-body"
+            style={{
+              fontSize: '11px',
+              fontWeight: 600,
+              color: '#335CFF',
+              textTransform: 'uppercase',
+              letterSpacing: '3px',
+              display: 'block',
+              marginBottom: '16px',
+              textAlign: 'center',
+            }}
+          >
+            testimonials
+          </span>
+
+          <h2
+            className="font-display"
+            style={{
+              fontFamily: "'VC Nudge Trial', sans-serif",
+              fontSize: 'clamp(24px, 3.2vw, 42px)',
+              fontWeight: 800,
+              letterSpacing: '1.5px',
+              textTransform: 'uppercase',
+              textAlign: 'center',
+              marginBottom: '50px',
+              color: '#FFFFFF',
+            }}
+          >
+            What Clients Say
+          </h2>
+
+          {/* Testimonial Rows Container */}
+          <div
+            className="testimonial-container"
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '20px',
+              width: 'calc(100% - 116px)',
+              margin: '0 auto',
+              overflow: 'hidden',
+            }}
+          >
+            {/* ROW 1: Scrolling Right to Left (Leftward Track) */}
+            <div className="testimonial-track-left" style={{ position: 'relative', zIndex: 0 }}>
+              {[
+                { quote: "The video shoot was flawlessly executed. Their art direction transformed our simple product into a premium cinematic masterpiece.", author: "Sarah K., VP at Velo" },
+                { quote: "Their editing pipeline is incredibly fast, and the sound design they layered onto our commercial is absolutely breathtaking.", author: "Marcus T., Creative Director" },
+                { quote: "Motion Haus's meticulous art direction and high-speed editing completely elevated our brand's online storytelling.", author: "Elena R., Founder of RAXA" },
+              ].concat([
+                { quote: "The video shoot was flawlessly executed. Their art direction transformed our simple product into a premium cinematic masterpiece.", author: "Sarah K., VP at Velo" },
+                { quote: "Their editing pipeline is incredibly fast, and the sound design they layered onto our commercial is absolutely breathtaking.", author: "Marcus T., Creative Director" },
+                { quote: "Motion Haus's meticulous art direction and high-speed editing completely elevated our brand's online storytelling.", author: "Elena R., Founder of RAXA" },
+              ]).map((t, idx) => (
+                <div
+                  key={`t-left-${idx}`}
+                  style={{
+                    background: '#000000',
+                    border: '1px solid rgba(115, 115, 115, 0.25)',
+                    borderRadius: '12px',
+                    padding: '24px 32px',
+                    width: 'clamp(280px, 30vw, 420px)',
+                    flexShrink: 0,
+                    position: 'relative',
+                    zIndex: 0,
+                  }}
+                >
+                  <p className="font-body" style={{ fontSize: '14px', color: '#BBBBBB', lineHeight: '1.6', marginBottom: '16px', fontStyle: 'italic' }}>
+                    "{t.quote}"
+                  </p>
+                  <span className="font-body" style={{ fontSize: '12px', color: '#335CFF', fontWeight: 600, letterSpacing: '1px', textTransform: 'uppercase' }}>
+                    // {t.author}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            {/* ROW 2: Scrolling Left to Right (Rightward Track) */}
+            <div className="testimonial-track-right" style={{ position: 'relative', zIndex: 0 }}>
+              {[
+                { quote: "High-speed multi-angle video shoots and premium CGI overlays. A world-class production agency in every aspect.", author: "James L., CTO of CyberMedia" },
+                { quote: "From complex CGI rendering to high-end post-production editing, they are the absolute authority in dynamic media.", author: "Chloe M., Lead at AOV" },
+                { quote: "Perfect execution of premium cinematic video shoots. Their art direction and visual graphic pacing are top-tier.", author: "David B., Marketing Director" },
+              ].concat([
+                { quote: "High-speed multi-angle video shoots and premium CGI overlays. A world-class production agency in every aspect.", author: "James L., CTO of CyberMedia" },
+                { quote: "From complex CGI rendering to high-end post-production editing, they are the absolute authority in dynamic media.", author: "Chloe M., Lead at AOV" },
+                { quote: "Perfect execution of premium cinematic video shoots. Their art direction and visual graphic pacing are top-tier.", author: "David B., Marketing Director" },
+              ]).map((t, idx) => (
+                <div
+                  key={`t-right-${idx}`}
+                  style={{
+                    background: '#000000',
+                    border: '1px solid rgba(115, 115, 115, 0.25)',
+                    borderRadius: '12px',
+                    padding: '24px 32px',
+                    width: 'clamp(280px, 30vw, 420px)',
+                    flexShrink: 0,
+                    position: 'relative',
+                    zIndex: 0,
+                  }}
+                >
+                  <p className="font-body" style={{ fontSize: '14px', color: '#BBBBBB', lineHeight: '1.6', marginBottom: '16px', fontStyle: 'italic' }}>
+                    "{t.quote}"
+                  </p>
+                  <span className="font-body" style={{ fontSize: '12px', color: '#335CFF', fontWeight: 600, letterSpacing: '1px', textTransform: 'uppercase' }}>
+                    // {t.author}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+
+        {/* ── 5. TECHNICAL specs Telemetry ── */}
+        <section
+          style={{
+            width: '100%',
+            maxWidth: 'calc(100% - 160px)',
+            margin: '20px auto 40px',
+            padding: '40px 20px',
+            position: 'relative',
+            zIndex: 10,
+            borderTop: '1px dashed rgba(115, 115, 115, 0.25)',
+            display: 'flex',
+            flexWrap: 'wrap',
+            justifyContent: 'space-between',
+            gap: '24px',
+          }}
+        >
+          {[
+            { label: 'RENDER ACCELERATION', val: 'HYPER-CORE INLINE' },
+            { label: 'PIPELINE LATENCY', val: '< 0.002s ENGINE' },
+            { label: 'BLUEPRINT AGENT STATUS', val: '100% OPERATIONAL' },
+          ].map((spec, i) => (
+            <div
+              key={i}
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '4px',
+                fontFamily: "'Inter Tight', sans-serif",
+              }}
+            >
+              <span
+                style={{
+                  fontSize: '10px',
+                  color: '#737373',
+                  letterSpacing: '2px',
+                  textTransform: 'uppercase',
+                }}
+              >
+                {spec.label}
+              </span>
+              <span
+                style={{
+                  fontSize: '14px',
+                  fontFamily: "'VC Nudge Trial', sans-serif",
+                  color: '#FFFFFF',
+                  letterSpacing: '1px',
+                }}
+              >
+                {spec.val}
+              </span>
+            </div>
           ))}
-          {/* Duplicate cards for infinite loop marquee */}
-          {cardData.map(card => (
-            <TickerCard
-              key={`back-${card.id}`}
-              id={card.id}
-              imageUrl={card.imageUrl}
-              title={card.title}
-              metric={card.metric}
-              description={card.description}
-              width="210px"
-              height="460px"
-            />
-          ))}
-        </div>
-      </section>
-    </main>
-  </>
+        </section>
+
+
+        {/* ── 6. CALL TO ACTION (CTA) SECTION before Footer ── */}
+        <section
+          id="cta"
+          style={{
+            width: '100%',
+            maxWidth: 'calc(100% - 116px)',
+            margin: '40px auto 80px',
+            padding: '80px 40px',
+            position: 'relative',
+            zIndex: 10,
+            borderTop: '1px dashed rgba(115, 115, 115, 0.25)',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            textAlign: 'center',
+            background: 'radial-gradient(circle at 50% 50%, rgba(51, 92, 255, 0.08) 0%, transparent 60%)',
+          }}
+        >
+          <span
+            className="font-body"
+            style={{
+              fontSize: '11px',
+              fontWeight: 600,
+              color: '#335CFF',
+              textTransform: 'uppercase',
+              letterSpacing: '3px',
+              display: 'block',
+              marginBottom: '16px',
+            }}
+          >
+            connect with us
+          </span>
+
+          <h2
+            className="font-display"
+            style={{
+              fontFamily: "'VC Nudge Trial', sans-serif",
+              fontSize: 'clamp(28px, 4vw, 56px)',
+              fontWeight: 800,
+              lineHeight: '1.05',
+              letterSpacing: '2px',
+              textTransform: 'uppercase',
+              marginBottom: '28px',
+              color: '#FFFFFF',
+              maxWidth: '800px',
+            }}
+          >
+            Ready to Launch Your Production Pipeline?
+          </h2>
+
+          <p
+            className="font-body"
+            style={{
+              fontSize: 'clamp(14px, 1.5vw, 18px)',
+              lineHeight: '1.6',
+              color: '#BBBBBB',
+              maxWidth: '580px',
+              marginBottom: '40px',
+            }}
+          >
+            Elevate your customer engagement, multiply sales conversions, and secure absolute market authority.
+          </p>
+
+          <GlowingButton>Start Your Project</GlowingButton>
+        </section>
+
+
+        {/* ── 7. PREMIUM FOOTER ── */}
+        <footer
+          style={{
+            width: '100%',
+            maxWidth: 'calc(100% - 160px)',
+            margin: '40px auto 0',
+            padding: '60px 20px 24px',
+            borderTop: '1px dashed rgba(115, 115, 115, 0.25)',
+            position: 'relative',
+            zIndex: 10,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '40px',
+          }}
+        >
+          {/* Horizontal Navigation Links */}
+          <div
+            style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              justifyContent: 'center',
+              gap: '32px',
+            }}
+          >
+            {['capabilities', 'showcase', 'pipeline', 'connect'].map((link, i) => (
+              <a
+                key={i}
+                href={`#${link}`}
+                className="font-body"
+                style={{
+                  fontSize: '13px',
+                  color: '#737373',
+                  textTransform: 'uppercase',
+                  letterSpacing: '2px',
+                  textDecoration: 'none',
+                  transition: 'color 0.2s ease',
+                }}
+                onMouseEnter={e => ((e.currentTarget as HTMLElement).style.color = '#FFFFFF')}
+                onMouseLeave={e => ((e.currentTarget as HTMLElement).style.color = '#737373')}
+              >
+                {link}
+              </a>
+            ))}
+          </div>
+
+          {/* Divider line */}
+          <div style={{ width: '100%', height: '1.2px', background: 'rgba(115, 115, 115, 0.15)' }} />
+
+          {/* Bottom Bar: Copyright and the Developer Ritual */}
+          <div
+            style={{
+              display: 'flex',
+              width: '100%',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              flexWrap: 'wrap',
+              gap: '16px',
+              fontSize: '12px',
+              color: '#737373',
+              fontFamily: "'Inter Tight', sans-serif",
+            }}
+          >
+            <span>© 2026 MOTION HAUS. ALL RIGHTS RESERVED.</span>
+
+            {/* The Ritual: Portfolio link of Heritage Isaac */}
+            <a
+              href="https://heritageisaac.xyz"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                color: '#737373',
+                textDecoration: 'none',
+                transition: 'color 0.2s ease',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '4px',
+              }}
+              onMouseEnter={e => {
+                const el = e.currentTarget as HTMLElement;
+                el.style.color = '#FFFFFF';
+              }}
+              onMouseLeave={e => {
+                const el = e.currentTarget as HTMLElement;
+                el.style.color = '#737373';
+              }}
+            >
+              BUILT BY HERITAGE ISAAC{' '}
+              <span
+                style={{
+                  transition: 'transform 0.2s ease',
+                  display: 'inline-block',
+                }}
+              >
+                ↗︎
+              </span>
+            </a>
+          </div>
+        </footer>
+      </main>
+    </>
   );
 }

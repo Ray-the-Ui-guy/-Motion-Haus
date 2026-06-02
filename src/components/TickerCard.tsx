@@ -20,6 +20,7 @@ export default function TickerCard({
   return (
     <div
       className="ticker-card-container group select-none cursor-pointer"
+      data-id={id}
       style={{
         width: width,
         height: height,
@@ -42,79 +43,29 @@ export default function TickerCard({
         <div
           className="ticker-card-front"
           style={{
-            position: 'absolute',
-            inset: 0,
+            position: 'relative',
+            width: '100%',
+            aspectRatio: '9 / 13',
             borderRadius: '12px',
-            border: '1px solid rgba(255, 255, 255, 0.15)',
-            backgroundImage: `url(${imageUrl})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backfaceVisibility: 'hidden',
+            border: '1px solid #FFFFFF',
             overflow: 'hidden',
+            backfaceVisibility: 'hidden',
             display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'flex-end',
-            padding: '20px',
+            alignItems: 'center',
+            justifyContent: 'center',
           }}
         >
-          {/* Dark scrim overlay at the bottom of the front image */}
-          <div
+          {/* Render the brand card in its premium rounded rectangular shape */}
+          <img
+            src={imageUrl}
+            alt={title}
             style={{
-              position: 'absolute',
-              inset: 0,
-              background: 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0) 100%)',
-              zIndex: 1,
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              pointerEvents: 'none',
             }}
           />
-
-          {/* Number badge */}
-          <div
-            style={{
-              position: 'absolute',
-              top: '16px',
-              right: '16px',
-              background: 'rgba(255, 255, 255, 0.1)',
-              backdropFilter: 'blur(8px)',
-              border: '1px solid rgba(255, 255, 255, 0.2)',
-              borderRadius: '200px',
-              padding: '4px 10px',
-              fontSize: '11px',
-              fontWeight: 600,
-              color: 'rgba(255,255,255,0.8)',
-              zIndex: 2,
-            }}
-          >
-            0{id}
-          </div>
-
-          {/* Content front */}
-          <div style={{ position: 'relative', zIndex: 2 }}>
-            <span
-              style={{
-                fontSize: '11px',
-                fontWeight: 600,
-                color: '#335CFF',
-                textTransform: 'uppercase',
-                letterSpacing: '2px',
-                display: 'block',
-                marginBottom: '4px',
-              }}
-            >
-              Sales Robot
-            </span>
-            <h3
-              style={{
-                fontSize: '20px',
-                fontWeight: 700,
-                color: '#FFFFFF',
-                margin: 0,
-                fontFamily: "'Inter Tight', sans-serif",
-                lineHeight: '1.2',
-              }}
-            >
-              {title}
-            </h3>
-          </div>
         </div>
 
         {/* BACK SIDE (Premium Dark-Glassmorphism Metric Info) */}
@@ -162,7 +113,7 @@ export default function TickerCard({
                 marginBottom: '8px',
               }}
             >
-              PERFORMANCE METRIC
+              PRODUCTION SHOOT
             </span>
             <h4
               style={{
