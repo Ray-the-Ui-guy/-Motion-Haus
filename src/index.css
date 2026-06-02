@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:wght@100..900&family=Syne:wght@400..800&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #000000;
+  font-family: 'Inter', sans-serif;
+  color: #FFFFFF;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom fonts styling */
+.font-display {
+  font-family: 'Syne', sans-serif;
+}
+
+.font-body {
+  font-family: 'Inter Tight', sans-serif;
+}
+
+/* ambient Blue Glow Animation */
+@keyframes glowPulse {
+  0%, 100% {
+    opacity: 0.8;
+    transform: translate(-50%, -50%) scale(1);
+    filter: blur(200px);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.15);
+    filter: blur(235px);
+  }
+}
+
+.ambient-glow {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: #335CFF;
+  opacity: 0.9;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: glowPulse 8s ease-in-out infinite;
+  z-index: 0;
+}
+
+@media (max-width: 768px) {
+  .ambient-glow {
+    width: 300px;
+    height: 300px;
+    animation: glowPulse 6s ease-in-out infinite;
+  }
+}
+
+/* Ticker autoscroll layout */
+@keyframes tickerMarquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.ticker-track {
+  display: flex;
+  width: max-content;
+  gap: 20px;
+  animation: tickerMarquee 35s linear infinite;
+}
+
+/* Pause the ticker scrolling on hover */
+.ticker-container:hover .ticker-track {
+  animation-play-state: paused;
+}
+
+/* Trigger 3D Card flip on hover */
+.ticker-card-container:hover .ticker-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Technical coordinates decoration dots */
+.grid-corner-dot {
+  width: 12px;
+  height: 12px;
+  background-color: #737373;
+  opacity: 0.45;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 10;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.grid-corner-dot:hover {
+  opacity: 0.9;
+  transform: scale(1.3);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+::-webkit-scrollbar-thumb {
+  background: #222222;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #333333;
+}
