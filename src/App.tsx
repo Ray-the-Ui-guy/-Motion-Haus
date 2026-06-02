@@ -245,7 +245,7 @@ export default function App() {
                 width: '100%',
               }}
             >
-              <div className="headline-line-1" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', gap: '14px 8px', width: '100%' }}>
+              <div className="headline-line-1" style={{ display: 'flex', flexWrap: 'nowrap', justifyContent: 'center', alignItems: 'center', gap: '0.25em', width: '100%', whiteSpace: 'nowrap' }}>
                 <span>A</span>
                 <span
                   style={{
@@ -266,10 +266,10 @@ export default function App() {
                     preserveAspectRatio="none"
                     style={{
                       position: 'absolute',
-                      top: 'calc(-0.45em + 10px)',
-                      left: 'calc(-1.35em + 61.2px)',
-                      width: 'calc(100% + 2.7em - 122.4px)',
-                      height: 'calc(100% + 0.9em - 20px)',
+                      top: '-0.265em',
+                      left: '-0.217em',
+                      width: 'calc(100% + 0.434em)',
+                      height: 'calc(100% + 0.53em)',
                       pointerEvents: 'none',
                       zIndex: 0,
                     }}
