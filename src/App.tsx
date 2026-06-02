@@ -89,7 +89,7 @@ export default function App() {
           <filter id="handdrawn-wiggle">
             <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" result="noise" />
             <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.5" xChannelSelector="R" yChannelSelector="G">
-              <animate attributeName="scale" values="2;3.5;1.5;3;2" dur="0.25s" repeatCount="indefinite" />
+              <animate attributeName="scale" values="2;3.5;1.5;3;2" dur="0.75s" repeatCount="indefinite" />
             </feDisplacementMap>
           </filter>
         </defs>
@@ -277,8 +277,8 @@ export default function App() {
                     style={{
                       position: 'absolute',
                       top: '-0.45em',
-                      left: 'calc(-1.35em + 36.2px)',
-                      width: 'calc(100% + 2.7em - 72.4px)',
+                      left: 'calc(-1.35em + 41.2px)',
+                      width: 'calc(100% + 2.7em - 82.4px)',
                       height: 'calc(100% + 0.9em)',
                       pointerEvents: 'none',
                       zIndex: 0,
