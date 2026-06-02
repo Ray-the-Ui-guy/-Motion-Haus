@@ -102,87 +102,62 @@ export default function App() {
         {/* Bottom Right Dot */}
         <div className="grid-corner-dot" style={{ right: '52px', bottom: '52px' }} />
 
-        {/* Vertical Blueprint Dotted Lines */}
+        {/* Vertical Blueprint Dashed Lines (Exact 18px dash, 6px gap, 1.2px width, 0.4 opacity) */}
         <div
           style={{
             position: 'absolute',
-            width: '0px',
+            width: '1.2px',
             height: '100%',
             left: '58px',
             top: 0,
-            borderLeft: '1px dotted rgba(115, 115, 115, 0.35)',
+            backgroundImage: 'linear-gradient(to bottom, rgba(115, 115, 115, 0.4) 0px, rgba(115, 115, 115, 0.4) 18px, transparent 18px, transparent 24px)',
+            backgroundSize: '1.2px 24px',
+            backgroundRepeat: 'repeat-y',
             pointerEvents: 'none',
           }}
         />
         <div
           style={{
             position: 'absolute',
-            width: '0px',
+            width: '1.2px',
             height: '100%',
             right: '58px',
             top: 0,
-            borderLeft: '1px dotted rgba(115, 115, 115, 0.35)',
+            backgroundImage: 'linear-gradient(to bottom, rgba(115, 115, 115, 0.4) 0px, rgba(115, 115, 115, 0.4) 18px, transparent 18px, transparent 24px)',
+            backgroundSize: '1.2px 24px',
+            backgroundRepeat: 'repeat-y',
             pointerEvents: 'none',
           }}
         />
 
-        {/* Horizontal Blueprint Dotted Lines */}
+        {/* Horizontal Blueprint Dashed Lines (Exact 18px dash, 6px gap, 1.2px height, 0.4 opacity) */}
         <div
           style={{
             position: 'absolute',
-            height: '0px',
+            height: '1.2px',
             width: '100%',
             left: 0,
             top: '58px',
-            borderTop: '1px dotted rgba(115, 115, 115, 0.35)',
+            backgroundImage: 'linear-gradient(to right, rgba(115, 115, 115, 0.4) 0px, rgba(115, 115, 115, 0.4) 18px, transparent 18px, transparent 24px)',
+            backgroundSize: '24px 1.2px',
+            backgroundRepeat: 'repeat-x',
             pointerEvents: 'none',
           }}
         />
         <div
           style={{
             position: 'absolute',
-            height: '0px',
+            height: '1.2px',
             width: '100%',
             left: 0,
             bottom: '58px',
-            borderTop: '1px dotted rgba(115, 115, 115, 0.35)',
+            backgroundImage: 'linear-gradient(to right, rgba(115, 115, 115, 0.4) 0px, rgba(115, 115, 115, 0.4) 18px, transparent 18px, transparent 24px)',
+            backgroundSize: '24px 1.2px',
+            backgroundRepeat: 'repeat-x',
             pointerEvents: 'none',
           }}
         />
 
-        {/* ── Header / Navigation ── */}
-        <header
-          style={{
-            width: '100%',
-            maxWidth: '1200px',
-            padding: '24px 72px',
-            display: 'flex',
-            justifyContent: 'flex-end',
-            alignItems: 'center',
-            zIndex: 10,
-          }}
-        >
-          <div style={{ display: 'flex', gap: '24px' }}>
-            <a
-              href="#"
-              className="font-body"
-              style={{ fontSize: '14px', color: 'rgba(255,255,255,0.6)', textDecoration: 'none', transition: 'color 0.2s' }}
-              onMouseEnter={e => ((e.currentTarget as HTMLElement).style.color = '#FFFFFF')}
-              onMouseLeave={e => ((e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.6)')}
-            >
-              Capabilities
-            </a>
-            <a
-              href="#"
-              className="font-body"
-              style={{ fontSize: '14px', color: 'rgba(255,255,255,0.6)', textDecoration: 'none', transition: 'color 0.2s' }}
-              onMouseEnter={e => ((e.currentTarget as HTMLElement).style.color = '#FFFFFF')}
-              onMouseLeave={e => ((e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.6)')}
-            >
-              Showcase
-            </a>
-          </div>
-        </header>
 
         {/* ── Main Hero Content ── */}
         <section
@@ -230,31 +205,38 @@ export default function App() {
               lineHeight: '1.4',
               letterSpacing: '1.5px',
               textTransform: 'uppercase',
-              maxWidth: '1000px',
+              maxWidth: '1200px',
               margin: '0 auto 28px',
               color: '#FBFBFBB2',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: '4px',
             }}
           >
-            A{' '}
-            <span
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                padding: '2px 16px',
-                border: '1.5px solid #FFFFFF',
-                borderRadius: '4px',
-                color: '#FFFFFF',
-                fontSize: '0.95em',
-                margin: '0 8px',
-                textShadow: '0 0 20px rgba(255, 255, 255, 0.25)',
-              }}
-            >
-              CREATIVE
-            </span>{' '}
-            Video Creation Agency
-            <br />
-            that drives engagement
+            <span style={{ display: 'block', width: '100%' }}>
+              A{' '}
+              <span
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  padding: '2px 16px',
+                  border: '1.5px solid #FFFFFF',
+                  borderRadius: '4px',
+                  color: '#FFFFFF',
+                  fontSize: '0.95em',
+                  margin: '0 8px',
+                  textShadow: '0 0 20px rgba(255, 255, 255, 0.25)',
+                }}
+              >
+                CREATIVE
+              </span>{' '}
+              Video Creation Agency
+            </span>
+            <span style={{ display: 'block', width: '100%', color: '#FBFBFBB2' }}>
+              that drives engagement
+            </span>
           </h1>
 
           {/* Tagline / Subheading */}
