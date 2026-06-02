@@ -3,7 +3,6 @@ import Loader from './components/Loader';
 import GlowingButton from './components/GlowingButton';
 import heroBg from './assets/hero section (1).png';
 import badgeIcon from './assets/Frame 2087328322.svg';
-import creativeBorder from './assets/Border.svg';
 import card1 from './assets/eb7d1248ca9801e1537108751909d610541bd6d7.png';
 import card2 from './assets/0d238c675ab28f5a142484dbc05c3dabe462d224.png';
 import card3 from './assets/6c664505e8723ba8b5c03cfc3244241b494bb20f.png';
@@ -84,6 +83,17 @@ export default function App() {
 
   return (
     <>
+      {/* SVG Filters for Handdrawn Wiggle effect */}
+      <svg style={{ position: 'absolute', width: 0, height: 0, pointerEvents: 'none' }}>
+        <defs>
+          <filter id="handdrawn-wiggle">
+            <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.5" xChannelSelector="R" yChannelSelector="G">
+              <animate attributeName="scale" values="2;3.5;1.5;3;2" dur="0.25s" repeatCount="indefinite" />
+            </feDisplacementMap>
+          </filter>
+        </defs>
+      </svg>
       {loading && <Loader onComplete={() => setLoading(false)} />}
       <main
         style={{
@@ -259,9 +269,11 @@ export default function App() {
                     verticalAlign: 'middle',
                   }}
                 >
-                  <img
-                    src={creativeBorder}
-                    alt=""
+                  <svg
+                    viewBox="0 0 303 100"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    preserveAspectRatio="none"
                     style={{
                       position: 'absolute',
                       top: '-0.45em',
@@ -269,10 +281,18 @@ export default function App() {
                       width: 'calc(100% + 2.7em - 72.4px)',
                       height: 'calc(100% + 0.9em)',
                       pointerEvents: 'none',
-                      objectFit: 'fill',
                       zIndex: 0,
+                      filter: 'url(#handdrawn-wiggle)',
                     }}
-                  />
+                  >
+                    <path
+                      className="handdrawn-path"
+                      d="M6.19949 0.750015C95.6963 5.7084 185.683 5.81015 300.101 3.79545M3.50012 1.29289C69.4611 4.7773 136.122 3.73392 300.09 3.42014M300.985 1.10295C301.834 35.9487 302.509 78.9444 299.958 94.6032M297.881 3.18559C297.281 24.0136 299.002 47.6953 298.06 95.5845M299.829 97.2461C196.271 89.6373 97.0061 93.8007 4.93611 95.4647M298.238 96.6835C204.927 99.7759 106.524 99.6748 2.57597 94.4778M5.37838 94.1422C-0.627844 67.8209 3.60047 43.4555 0.750031 1.58725M1.64425 94.9348C3.65604 57.4825 6.94108 21.7165 4.84992 1.3952"
+                      stroke="white"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                    />
+                  </svg>
                   <span
                     style={{
                       color: '#FFFFFF',

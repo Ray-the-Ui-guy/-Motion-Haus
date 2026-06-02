@@ -323,3 +323,21 @@ body {
   }
 }
 
+/* Handdrawn path drawing animation */
+@keyframes handdrawnDraw {
+  0% {
+    stroke-dasharray: 1200;
+    stroke-dashoffset: 1200;
+  }
+  100% {
+    stroke-dasharray: 1200;
+    stroke-dashoffset: 0;
+  }
+}
+
+.handdrawn-path {
+  stroke-dasharray: 1200;
+  stroke-dashoffset: 1200;
+  animation: handdrawnDraw 2.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
