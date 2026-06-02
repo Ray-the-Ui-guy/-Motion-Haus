@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import TickerCard from './components/TickerCard';
 import Loader from './components/Loader';
 import BorderGlow from './components/BorderGlow';
+import bgRough from './assets/e5f55fa59bbd791ae3b6fa5991966451f550c574.png';
 
 const cardData = [
   {
@@ -90,6 +91,21 @@ export default function App() {
           transition: 'opacity 0.4s ease-in-out',
         }}
       >
+        {/* ── Background Rough texture Overlay ── */}
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            backgroundImage: `url(${bgRough})`,
+            backgroundSize: 'cover',
+            backgroundColor: 'rgba(217, 217, 217, 0.02)',
+            backgroundBlendMode: 'soft-light',
+            opacity: 0.5,
+            pointerEvents: 'none',
+            zIndex: 1,
+          }}
+        />
+
         {/* ── Ambient Glow Light Backdrop ── */}
         <div className="ambient-glow" />
 
@@ -275,8 +291,10 @@ export default function App() {
                 background: 'transparent',
                 border: 'none',
                 padding: '16px 42px',
-                fontSize: '18px',
-                fontWeight: 500,
+                fontFamily: "'Inter Tight', sans-serif",
+                fontWeight: 400,
+                fontSize: '24px',
+                lineHeight: '1.65',
                 color: '#FFFFFF',
                 cursor: 'pointer',
                 display: 'block',
