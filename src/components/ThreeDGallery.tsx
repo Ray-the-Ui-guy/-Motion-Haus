@@ -14,18 +14,78 @@ interface ThreeDGalleryProps {
 }
 
 export const ThreeDGallery: React.FC<ThreeDGalleryProps> = ({ items }) => {
-  const total = items.length;
-  const midIndex = Math.floor(total / 2);
-
-  // Divide 100% width among 7 cards to fit exactly side-by-side
-  const cardWidthPercent = 13.5; 
-  const angleStep = 9; // Perfect cylinder angle step
+  // Explicit design tokens provided by the user (arranged index 0 to 6 representing Card 7 to Card 1)
+  const layouts = [
+    // Card 7 (leftmost)
+    {
+      width: '186px',
+      height: '494px',
+      translateX: '-640px',
+      translateY: '-127px',
+      rotateY: '0deg',
+      translateZ: '0px',
+    },
+    // Card 6
+    {
+      width: '226px',
+      height: '368px',
+      translateX: '-414px',
+      translateY: '-64px',
+      rotateY: '0deg',
+      translateZ: '0px',
+    },
+    // Card 5
+    {
+      width: '186px',
+      height: '271px',
+      translateX: '-194px',
+      translateY: '-16px',
+      rotateY: '0deg',
+      translateZ: '0px',
+    },
+    // Card 4 (center)
+    {
+      width: '174px',
+      height: '239px',
+      translateX: '0px',
+      translateY: '0px',
+      rotateY: '0deg',
+      translateZ: '0px',
+    },
+    // Card 3
+    {
+      width: '185px',
+      height: '276px',
+      translateX: '192px',
+      translateY: '-20px',
+      rotateY: '0deg',
+      translateZ: '0px',
+    },
+    // Card 2
+    {
+      width: '227px',
+      height: '374px',
+      translateX: '414px',
+      translateY: '-65px',
+      rotateY: '0deg',
+      translateZ: '0px',
+    },
+    // Card 1 (rightmost)
+    {
+      width: '193px',
+      height: '508px',
+      translateX: '640px',
+      translateY: '-128px',
+      rotateY: '0deg',
+      translateZ: '0px',
+    },
+  ];
 
   return (
     <div
       style={{
         width: '100%',
-        height: '340px', // Compact height to fit perfectly on desktop views
+        height: '530px', // Adjusted to fully view 508px tall cards
         position: 'relative',
         background: 'transparent',
         display: 'flex',
@@ -38,15 +98,15 @@ export const ThreeDGallery: React.FC<ThreeDGalleryProps> = ({ items }) => {
       {/* ── VIEWPORT CONTAINER (Constrained to desktop screen bounds) ── */}
       <div
         style={{
-          width: 'calc(100% - 116px)', 
-          maxWidth: '1140px', // Fits perfectly inside desktop standard containers
+          width: '100%',
+          maxWidth: '1280px', 
           height: '100%',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           overflow: 'hidden',
           borderRadius: '16px',
-          perspective: '1200px', 
+          perspective: '1500px', 
         }}
       >
         <div
@@ -61,31 +121,21 @@ export const ThreeDGallery: React.FC<ThreeDGalleryProps> = ({ items }) => {
           }}
         >
           {items.map((card, index) => {
-            const position = index - midIndex;
-            
-            // Percentage-based translation so it scales fluidly on all screens
-            const rotateY = position * angleStep;
-            // Center card pushed back, outer cards closer to the viewer
-            const translateZ = (Math.abs(position) - midIndex) * 35; 
-            // Lift outer cards slightly to form a neat smile curvature
-            const translateY = -Math.abs(position) * 6;
-
-            // Custom offsets to ensure cards touch perfectly without gaps in 3D space
-            const offsets = [-300, -201, -101, 0, 101, 201, 300];
-            const translateXPercent = offsets[index];
+            const layout = layouts[index] || layouts[3];
 
             return (
               <div
                 key={card.id}
                 style={{
                   position: 'absolute',
-                  width: `${cardWidthPercent}%`,
+                  width: layout.width,
+                  height: layout.height,
                   left: '50%',
-                  height: 'auto',
                   transformStyle: 'preserve-3d',
                   pointerEvents: 'auto',
-                  // translateX(-50%) centers the absolute element
-                  transform: `translateX(-50%) translateX(${translateXPercent}%) translateY(${translateY}px) rotateY(${rotateY}deg) translateZ(${translateZ}px)`,
+                  // Position relative to absolute center of parent using exact translation metrics
+                  transform: `translateX(-50%) translateX(${layout.translateX}) translateY(${layout.translateY}) rotateY(${layout.rotateY}) translateZ(${layout.translateZ})`,
+                  transition: 'transform 0.5s ease',
                 }}
               >
                 <TickerCard
@@ -95,7 +145,7 @@ export const ThreeDGallery: React.FC<ThreeDGalleryProps> = ({ items }) => {
                   metric={card.metric}
                   description={card.description}
                   width="100%"
-                  height="auto"
+                  height="100%"
                 />
               </div>
             );
