@@ -85,7 +85,7 @@ export default function TickerCard({
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between',
-            padding: '24px',
+            padding: 'clamp(12px, 2vw, 20px)', // Adaptive padding
             overflow: 'hidden',
           }}
         >
@@ -105,24 +105,25 @@ export default function TickerCard({
           <div style={{ position: 'relative', zIndex: 1 }}>
             <span
               style={{
-                fontSize: '10px',
+                fontSize: '9px',
                 fontWeight: 700,
                 color: '#335CFF',
                 textTransform: 'uppercase',
-                letterSpacing: '2.5px',
+                letterSpacing: '1.5px',
                 display: 'block',
-                marginBottom: '8px',
+                marginBottom: '4px',
               }}
             >
               PRODUCTION SHOOT
             </span>
             <h4
               style={{
-                fontSize: '18px',
+                fontSize: 'clamp(13px, 1.6vw, 16px)', // Adaptive title font-size
                 fontWeight: 600,
                 color: '#FFFFFF',
                 margin: 0,
                 fontFamily: "'Inter Tight', sans-serif",
+                lineHeight: '1.2',
               }}
             >
               {title}
@@ -134,13 +135,13 @@ export default function TickerCard({
             style={{
               position: 'relative',
               zIndex: 1,
-              margin: '16px 0',
+              margin: '8px 0',
               fontFamily: "'Inter Tight', sans-serif",
             }}
           >
             <div
               style={{
-                fontSize: '44px',
+                fontSize: 'clamp(28px, 3.5vw, 36px)', // Adaptive metric font-size
                 fontWeight: 800,
                 color: '#FFFFFF',
                 lineHeight: '1',
@@ -152,9 +153,9 @@ export default function TickerCard({
             <div
               style={{
                 height: '2px',
-                width: '40px',
+                width: '30px',
                 background: 'linear-gradient(90deg, #335CFF, transparent)',
-                marginTop: '10px',
+                marginTop: '6px',
               }}
             />
           </div>
@@ -163,9 +164,9 @@ export default function TickerCard({
           <div style={{ position: 'relative', zIndex: 1 }}>
             <p
               style={{
-                fontSize: '13px',
+                fontSize: 'clamp(11px, 1.2vw, 12.5px)', // Adaptive description font-size
                 color: '#BBBBBB',
-                lineHeight: '1.6',
+                lineHeight: '1.4',
                 margin: 0,
               }}
             >

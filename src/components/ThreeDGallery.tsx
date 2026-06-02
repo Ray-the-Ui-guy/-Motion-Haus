@@ -20,43 +20,36 @@ export const ThreeDGallery: React.FC<ThreeDGalleryProps> = ({ items }) => {
     {
       width: '13.5%',
       aspectRatio: '186/494',
-      translateY: '-100px',
     },
     // Card 6
     {
       width: '16.4%',
       aspectRatio: '226/368',
-      translateY: '-50px',
     },
     // Card 5
     {
       width: '13.5%',
       aspectRatio: '186/271',
-      translateY: '-13px',
     },
     // Card 4 (center)
     {
       width: '12.6%',
       aspectRatio: '174/239',
-      translateY: '0px',
     },
     // Card 3
     {
       width: '13.4%',
       aspectRatio: '185/276',
-      translateY: '-16px',
     },
     // Card 2
     {
       width: '16.5%',
       aspectRatio: '227/374',
-      translateY: '-51px',
     },
     // Card 1 (rightmost)
     {
       width: '14.0%',
       aspectRatio: '193/508',
-      translateY: '-100px',
     },
   ];
 
@@ -64,7 +57,7 @@ export const ThreeDGallery: React.FC<ThreeDGalleryProps> = ({ items }) => {
     <div
       style={{
         width: '100%',
-        height: '440px', // Sized to fit scaled cards and translateY offsets
+        height: '530px', // Set to house the tallest card (508px) plus breathing room
         position: 'relative',
         background: 'transparent',
         display: 'flex',
@@ -93,22 +86,32 @@ export const ThreeDGallery: React.FC<ThreeDGalleryProps> = ({ items }) => {
               key={card.id}
               style={{
                 width: layout.width,
-                aspectRatio: layout.aspectRatio,
-                transform: `translateY(${layout.translateY})`,
+                height: '100%', // Spans full height of the parent gallery
+                display: 'flex',
+                alignItems: 'center', // Centers the child card vertically (top to down)
+                justifyContent: 'center',
                 position: 'relative',
-                borderRadius: '12px',
-                overflow: 'hidden',
+                transformStyle: 'preserve-3d',
               }}
             >
-              <TickerCard
-                id={card.id}
-                imageUrl={card.imageUrl}
-                title={card.title}
-                metric={card.metric}
-                description={card.description}
-                width="100%"
-                height="100%"
-              />
+              <div
+                style={{
+                  width: '100%',
+                  aspectRatio: layout.aspectRatio,
+                  transformStyle: 'preserve-3d',
+                  position: 'relative',
+                }}
+              >
+                <TickerCard
+                  id={card.id}
+                  imageUrl={card.imageUrl}
+                  title={card.title}
+                  metric={card.metric}
+                  description={card.description}
+                  width="100%"
+                  height="100%"
+                />
+              </div>
             </div>
           );
         })}
