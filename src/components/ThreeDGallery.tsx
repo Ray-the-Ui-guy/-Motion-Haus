@@ -18,8 +18,8 @@ export const ThreeDGallery: React.FC<ThreeDGalleryProps> = ({ items }) => {
   const midIndex = Math.floor(total / 2);
 
   // Divide 100% width among 7 cards to fit exactly side-by-side
-  const cardWidthPercent = 14.28; 
-  const angleStep = 7.5; // Smooth curvature angle step
+  const cardWidthPercent = 13.5; 
+  const angleStep = 9; // Perfect cylinder angle step
 
   return (
     <div
@@ -46,7 +46,7 @@ export const ThreeDGallery: React.FC<ThreeDGalleryProps> = ({ items }) => {
           justifyContent: 'center',
           overflow: 'hidden',
           borderRadius: '16px',
-          perspective: '1500px', 
+          perspective: '1200px', 
         }}
       >
         <div
@@ -65,8 +65,10 @@ export const ThreeDGallery: React.FC<ThreeDGalleryProps> = ({ items }) => {
             
             // Percentage-based translation so it scales fluidly on all screens
             const rotateY = position * angleStep;
-            const translateZ = -Math.abs(position) * 15; 
-            const translateY = Math.abs(position) * 1.5;
+            // Center card pushed back, outer cards closer to the viewer
+            const translateZ = (Math.abs(position) - midIndex) * 35; 
+            // Lift outer cards slightly to form a neat smile curvature
+            const translateY = -Math.abs(position) * 6;
 
             return (
               <div
@@ -78,8 +80,8 @@ export const ThreeDGallery: React.FC<ThreeDGalleryProps> = ({ items }) => {
                   height: 'auto',
                   transformStyle: 'preserve-3d',
                   pointerEvents: 'auto',
-                  // translateX(-50%) centers the absolute element, position * 100.2% shifts them side-by-side with a tiny subpixel overlap
-                  transform: `translateX(-50%) translateX(${position * 100.2}%) translateY(${translateY}px) rotateY(${rotateY}deg) translateZ(${translateZ}px)`,
+                  // translateX(-50%) centers the absolute element, position * 103% shifts them side-by-side with perfect spacing
+                  transform: `translateX(-50%) translateX(${position * 103}%) translateY(${translateY}px) rotateY(${rotateY}deg) translateZ(${translateZ}px)`,
                 }}
               >
                 <TickerCard
@@ -89,7 +91,7 @@ export const ThreeDGallery: React.FC<ThreeDGalleryProps> = ({ items }) => {
                   metric={card.metric}
                   description={card.description}
                   width="100%"
-                  height="100%"
+                  height="auto"
                 />
               </div>
             );
