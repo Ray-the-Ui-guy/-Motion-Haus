@@ -91,7 +91,7 @@ export default function App() {
           transition: 'opacity 0.4s ease-in-out',
         }}
       >
-        {/* ── Background Rough texture Overlay ── */}
+        {/* ── Background Rough texture Overlay (Masked strictly under the center ambient glow) ── */}
         <div
           style={{
             position: 'absolute',
@@ -103,6 +103,8 @@ export default function App() {
             opacity: 0.5,
             pointerEvents: 'none',
             zIndex: 1,
+            maskImage: 'radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 65%)',
+            WebkitMaskImage: 'radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 65%)',
           }}
         />
 
