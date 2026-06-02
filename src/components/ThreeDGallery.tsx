@@ -74,15 +74,15 @@ export const ThreeDGallery: React.FC<ThreeDGalleryProps> = ({ items }) => {
         padding: 0,
       }}
     >
-      {/* ── VIEWPORT CONTAINER (Constrained exactly to vertical dashed guide lines) ── */}
+      {/* ── VIEWPORT CONTAINER (Constrained exactly to vertical dashed guide lines + 4px gap) ── */}
       <div
         style={{
-          width: 'calc(100% - 116px)', // Extends exactly between the left (58px) and right (58px) guidelines
+          width: 'calc(100% - 124px)', // Leaves exactly 4px gap from left (58px) and right (58px) guide lines
           height: '100%',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          gap: '10px', // Exact 10px spacing
+          gap: '6px', // 6px spacing between cards
         }}
       >
         {items.map((card, index) => {
