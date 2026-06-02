@@ -135,7 +135,6 @@ export const ThreeDGallery: React.FC<ThreeDGalleryProps> = ({ items }) => {
                 position: 'absolute',
                 width: 'clamp(240px, 20vw, 310px)', // Increased size more
                 height: 'auto',
-                aspectRatio: '9 / 13',
                 transformStyle: 'preserve-3d',
                 pointerEvents: 'auto',
               }}

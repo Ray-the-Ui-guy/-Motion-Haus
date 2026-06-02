@@ -3,13 +3,13 @@ import Loader from './components/Loader';
 import GlowingButton from './components/GlowingButton';
 const heroBg = 'https://files.catbox.moe/cgdvr2.png';
 import badgeIcon from './assets/Frame 2087328322.svg';
-const card1 = 'https://files.catbox.moe/jv8vx5.png';
-const card2 = 'https://files.catbox.moe/v5lta9.png';
-const card3 = 'https://files.catbox.moe/mg9ura.png';
-const card4 = 'https://files.catbox.moe/lod8mv.png';
-const card5 = 'https://files.catbox.moe/6dlwo5.png';
-const card6 = 'https://files.catbox.moe/duf4bo.png';
-const card7 = 'https://files.catbox.moe/it9u24.png';
+const card1 = 'https://files.catbox.moe/96y0cp.png';
+const card2 = 'https://files.catbox.moe/7kzwj6.png';
+const card3 = 'https://files.catbox.moe/q0iasi.png';
+const card4 = 'https://files.catbox.moe/0dtwhw.png';
+const card5 = 'https://files.catbox.moe/a5l3sw.png';
+const card6 = 'https://files.catbox.moe/rw9utz.png';
+const card7 = 'https://files.catbox.moe/cn5zti.png';
 
 // Custom 3D Panoramic Curved Gallery
 import ThreeDGallery from './components/ThreeDGallery';

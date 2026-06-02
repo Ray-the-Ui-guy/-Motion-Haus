@@ -45,7 +45,6 @@ export default function TickerCard({
           style={{
             position: 'relative',
             width: '100%',
-            aspectRatio: '9 / 13',
             borderRadius: '12px',
             border: '1px solid #FFFFFF',
             overflow: 'hidden',
@@ -61,8 +60,8 @@ export default function TickerCard({
             alt={title}
             style={{
               width: '100%',
-              height: '100%',
-              objectFit: 'cover',
+              height: 'auto',
+              display: 'block',
               pointerEvents: 'none',
             }}
           />
