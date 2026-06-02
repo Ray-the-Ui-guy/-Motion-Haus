@@ -742,8 +742,8 @@ export default function App() {
           style={{
             width: '100%',
             maxWidth: 'calc(100% - 116px)',
-            margin: '20px auto 20px',
-            padding: '40px 40px',
+            margin: '20px auto 0',
+            padding: '40px 40px 10px',
             position: 'relative',
             zIndex: 10,
             borderTop: '1px dashed rgba(115, 115, 115, 0.25)',
@@ -808,15 +808,15 @@ export default function App() {
           style={{
             width: '100%',
             maxWidth: 'calc(100% - 160px)',
-            margin: '20px auto 0',
-            padding: '30px 20px 24px',
+            margin: '0 auto',
+            padding: '10px 20px 24px',
             borderTop: '1px dashed rgba(115, 115, 115, 0.25)',
             position: 'relative',
             zIndex: 10,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            gap: '40px',
+            gap: '24px',
           }}
         >
 
