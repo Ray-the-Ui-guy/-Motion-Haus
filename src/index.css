@@ -296,17 +296,17 @@ body {
 /* Responsive Overrides to shrink the Hero Headline fluidly on Tablet & Mobile */
 @media (max-width: 991px) {
   .hero-headline {
-    font-size: clamp(14px, 3.4vw, 36px) !important;
-    gap: 6px !important;
+    font-size: clamp(13px, 3.2vw, 32px) !important;
+    gap: 16px !important;
     line-height: 1.1 !important;
   }
 }
 
 @media (max-width: 580px) {
   .hero-headline {
-    font-size: clamp(10px, 3.8vw, 20px) !important;
+    font-size: clamp(9px, 3.6vw, 18px) !important;
     line-height: 1.0 !important;
-    gap: 4px !important;
+    gap: 14px !important;
   }
 }
 
@@ -444,9 +444,9 @@ body {
     max-width: calc(100% - 58px) !important;
   }
   .hero-tagline {
-    font-size: clamp(13px, 3.4vw, 16px) !important;
-    line-height: 22px !important;
-    letter-spacing: 0.8px !important;
+    font-size: clamp(14.2px, 3.6vw, 17.2px) !important;
+    line-height: 24px !important;
+    letter-spacing: 1.2px !important;
     max-width: 85% !important;
   }
   .why-section-container {
