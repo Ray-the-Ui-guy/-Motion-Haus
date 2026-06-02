@@ -45,8 +45,6 @@ export default function TickerCard({
           style={{
             position: 'relative',
             width: '100%',
-            borderRadius: '12px',
-            border: '1px solid #FFFFFF',
             overflow: 'hidden',
             backfaceVisibility: 'hidden',
             display: 'flex',
