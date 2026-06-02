@@ -86,7 +86,7 @@ export const ThreeDGallery: React.FC<ThreeDGalleryProps> = ({ items }) => {
           height: '100%',
           display: 'flex',
           alignItems: 'center',
-          overflow: isTabletOrMobile ? 'hidden' : 'visible', // Hide overflow on mobile for marquee scroll bounds
+          overflow: 'hidden', // Contain scrolling carousel within margins
           position: 'relative',
         }}
       >
@@ -136,30 +136,43 @@ export const ThreeDGallery: React.FC<ThreeDGalleryProps> = ({ items }) => {
             })}
           </div>
         ) : (
-          /* ── DESKTOP STATIC CURVED GALLERY ── */
+          /* ── DESKTOP MARQUEE CAROUSEL TRACK (Scrolls from left infinitely) ── */
           <div
+            className="gallery-track-desktop"
             style={{
-              width: '100%',
-              height: '100%',
               display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              gap: '6px', // 6px spacing between cards
+              gap: '6px',
+              width: 'max-content',
+              transformStyle: 'preserve-3d',
             }}
           >
-            {items.map((card, index) => {
-              const layout = layouts[index] || layouts[3];
+            {/* Render all 7 cards duplicated for infinite seamless looping */}
+            {[...items, ...items].map((card, index) => {
+              const layoutIndex = index % 7;
+              const layout = layouts[layoutIndex] || layouts[3];
+              
+              // Map to absolute figma sizes to support max-content track correctly
+              const absoluteSizes = [
+                { width: '186px', height: '494px' }, // Card 7
+                { width: '226px', height: '368px' }, // Card 6
+                { width: '186px', height: '271px' }, // Card 5
+                { width: '174px', height: '239px' }, // Card 4
+                { width: '185px', height: '276px' }, // Card 3
+                { width: '227px', height: '374px' }, // Card 2
+                { width: '193px', height: '508px' }, // Card 1
+              ];
+              const size = absoluteSizes[layoutIndex];
 
               return (
                 <div
-                  key={card.id}
+                  key={`${card.id}-${index}`}
                   style={{
-                    width: layout.width,
-                    height: '100%', // Spans full height of the parent gallery
+                    width: size.width,
+                    height: '580px', // Spans full height of parent gallery to align center
                     display: 'flex',
-                    alignItems: 'center', // Centers the child card vertically (top to down)
+                    alignItems: 'center', // Centered vertically (top to bottom)
                     justifyContent: 'center',
-                    position: 'relative',
+                    flexShrink: 0,
                     transformStyle: 'preserve-3d',
                   }}
                 >

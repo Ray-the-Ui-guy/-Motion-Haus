@@ -115,10 +115,7 @@ body {
   animation-play-state: paused;
 }
 
-/* Trigger 3D Card flip on hover */
-.ticker-card-container:hover .ticker-card-inner {
-  transform: rotateY(180deg);
-}
+
 
 /* Technical coordinates decoration dots */
 .grid-corner-dot {
@@ -469,5 +466,62 @@ body {
     transform: translateX(-50%);
   }
 }
+
+/* Reveal Up Keyframes & Classes */
+@keyframes revealUp {
+  0% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal-animate {
+  opacity: 0;
+  animation: revealUp 1.0s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.reveal-delay-1 {
+  animation-delay: 0.18s;
+}
+
+.reveal-delay-2 {
+  animation-delay: 0.36s;
+}
+
+/* Card hover scaling and lifting micro-animations */
+.hover-card-animate {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, background-color 0.4s ease, box-shadow 0.4s ease !important;
+}
+
+.hover-card-animate:hover {
+  transform: translateY(-8px) scale(1.015);
+  box-shadow: 0 12px 30px rgba(51, 92, 255, 0.12);
+}
+
+/* Desktop Gallery Marquee */
+.gallery-track-desktop {
+  display: flex;
+  gap: 6px;
+  width: max-content;
+  animation: marqueeDesktop 28s linear infinite;
+}
+
+.gallery-track-desktop:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marqueeDesktop {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 
 

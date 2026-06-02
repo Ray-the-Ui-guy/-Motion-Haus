@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 interface TickerCardProps {
   id: number;
   imageUrl: string;
@@ -17,10 +19,16 @@ export default function TickerCard({
   width,
   height,
 }: TickerCardProps) {
+  const [isFlipped, setIsFlipped] = useState(false);
+
   return (
     <div
       className="ticker-card-container group select-none cursor-pointer"
       data-id={id}
+      onClick={(e) => {
+        e.stopPropagation();
+        setIsFlipped(!isFlipped);
+      }}
       style={{
         width: width,
         height: height,
@@ -37,6 +45,7 @@ export default function TickerCard({
           position: 'relative',
           transformStyle: 'preserve-3d',
           transition: 'transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+          transform: isFlipped ? 'rotateY(180deg)' : 'none',
         }}
       >
         {/* FRONT SIDE (Stunning Image Card) */}

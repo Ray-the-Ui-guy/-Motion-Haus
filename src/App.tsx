@@ -227,7 +227,7 @@ export default function App() {
 
             {/* Headline */}
             <h1
-              className="font-display hero-headline"
+              className="font-display hero-headline reveal-animate"
               style={{
                 fontFamily: "'VC Nudge Trial', 'Syne', sans-serif",
                 fontSize: 'clamp(20px, 3.4vw, 54px)',
@@ -300,7 +300,7 @@ export default function App() {
 
             {/* Tagline */}
             <p
-              className="font-body hero-tagline"
+              className="font-body hero-tagline reveal-animate reveal-delay-1"
               style={{
                 fontFamily: "'Inter Tight', sans-serif",
                 fontWeight: 400,
@@ -313,7 +313,9 @@ export default function App() {
             </p>
 
             {/* CTA Button */}
-            <GlowingButton>Generate Cards</GlowingButton>
+            <div className="reveal-animate reveal-delay-2">
+              <GlowingButton>Generate Cards</GlowingButton>
+            </div>
           </div>
 
           {/* 3D Panoramic Curved Sticky Scroll Gallery */}
@@ -393,12 +395,12 @@ export default function App() {
             ].map((feature, i) => (
               <div
                 key={i}
+                className="hover-card-animate"
                 style={{
                   background: 'rgba(255, 255, 255, 0.01)',
                   border: '1px solid rgba(115, 115, 115, 0.12)',
                   borderRadius: '16px',
                   padding: '36px',
-                  transition: 'all 0.3s ease',
                   position: 'relative',
                   cursor: 'default',
                 }}
@@ -524,13 +526,12 @@ export default function App() {
             ].map((service, i) => (
               <div
                 key={i}
-                className="group"
+                className="group hover-card-animate"
                 style={{
                   background: 'rgba(255, 255, 255, 0.01)',
                   border: '1px solid rgba(115, 115, 115, 0.15)',
                   borderRadius: '16px',
                   padding: '36px',
-                  transition: 'all 0.3s ease',
                   position: 'relative',
                   overflow: 'hidden',
                   cursor: 'pointer',
