@@ -57,7 +57,7 @@ export const ThreeDGallery: React.FC<ThreeDGalleryProps> = ({ items }) => {
     <div
       style={{
         width: '100%',
-        height: '530px', // Set to house the tallest card (508px) plus breathing room
+        height: '580px', // Increased height to provide abundant vertical clearance for taller cards (e.g. Card 1 and 7)
         position: 'relative',
         background: 'transparent',
         display: 'flex',
