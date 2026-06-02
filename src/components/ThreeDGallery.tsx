@@ -70,6 +70,10 @@ export const ThreeDGallery: React.FC<ThreeDGalleryProps> = ({ items }) => {
             // Lift outer cards slightly to form a neat smile curvature
             const translateY = -Math.abs(position) * 6;
 
+            // Custom offsets to ensure cards touch perfectly without gaps in 3D space
+            const offsets = [-300, -201, -101, 0, 101, 201, 300];
+            const translateXPercent = offsets[index];
+
             return (
               <div
                 key={card.id}
@@ -80,8 +84,8 @@ export const ThreeDGallery: React.FC<ThreeDGalleryProps> = ({ items }) => {
                   height: 'auto',
                   transformStyle: 'preserve-3d',
                   pointerEvents: 'auto',
-                  // translateX(-50%) centers the absolute element, position * 103% shifts them side-by-side with perfect spacing
-                  transform: `translateX(-50%) translateX(${position * 103}%) translateY(${translateY}px) rotateY(${rotateY}deg) translateZ(${translateZ}px)`,
+                  // translateX(-50%) centers the absolute element
+                  transform: `translateX(-50%) translateX(${translateXPercent}%) translateY(${translateY}px) rotateY(${rotateY}deg) translateZ(${translateZ}px)`,
                 }}
               >
                 <TickerCard
