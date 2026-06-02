@@ -266,10 +266,10 @@ export default function App() {
                     preserveAspectRatio="none"
                     style={{
                       position: 'absolute',
-                      top: '-0.45em',
+                      top: 'calc(-0.45em + 10px)',
                       left: 'calc(-1.35em + 61.2px)',
                       width: 'calc(100% + 2.7em - 122.4px)',
-                      height: 'calc(100% + 0.9em)',
+                      height: 'calc(100% + 0.9em - 20px)',
                       pointerEvents: 'none',
                       zIndex: 0,
                     }}
@@ -736,59 +736,6 @@ export default function App() {
         </section>
 
 
-        {/* ── 5. TECHNICAL specs Telemetry ── */}
-        <section
-          style={{
-            width: '100%',
-            maxWidth: 'calc(100% - 160px)',
-            margin: '20px auto 40px',
-            padding: '40px 20px',
-            position: 'relative',
-            zIndex: 10,
-            borderTop: '1px dashed rgba(115, 115, 115, 0.25)',
-            display: 'flex',
-            flexWrap: 'wrap',
-            justifyContent: 'space-between',
-            gap: '24px',
-          }}
-        >
-          {[
-            { label: 'RENDER ACCELERATION', val: 'HYPER-CORE INLINE' },
-            { label: 'PIPELINE LATENCY', val: '< 0.002s ENGINE' },
-            { label: 'BLUEPRINT AGENT STATUS', val: '100% OPERATIONAL' },
-          ].map((spec, i) => (
-            <div
-              key={i}
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '4px',
-                fontFamily: "'Inter Tight', sans-serif",
-              }}
-            >
-              <span
-                style={{
-                  fontSize: '10px',
-                  color: '#737373',
-                  letterSpacing: '2px',
-                  textTransform: 'uppercase',
-                }}
-              >
-                {spec.label}
-              </span>
-              <span
-                style={{
-                  fontSize: '14px',
-                  fontFamily: "'VC Nudge Trial', sans-serif",
-                  color: '#FFFFFF',
-                  letterSpacing: '1px',
-                }}
-              >
-                {spec.val}
-              </span>
-            </div>
-          ))}
-        </section>
 
 
         {/* ── 6. CALL TO ACTION (CTA) SECTION before Footer ── */}
@@ -874,35 +821,7 @@ export default function App() {
             gap: '40px',
           }}
         >
-          {/* Horizontal Navigation Links */}
-          <div
-            style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              justifyContent: 'center',
-              gap: '32px',
-            }}
-          >
-            {['capabilities', 'showcase', 'pipeline', 'connect'].map((link, i) => (
-              <a
-                key={i}
-                href={`#${link}`}
-                className="font-body"
-                style={{
-                  fontSize: '13px',
-                  color: '#737373',
-                  textTransform: 'uppercase',
-                  letterSpacing: '2px',
-                  textDecoration: 'none',
-                  transition: 'color 0.2s ease',
-                }}
-                onMouseEnter={e => ((e.currentTarget as HTMLElement).style.color = '#FFFFFF')}
-                onMouseLeave={e => ((e.currentTarget as HTMLElement).style.color = '#737373')}
-              >
-                {link}
-              </a>
-            ))}
-          </div>
+
 
           {/* Divider line */}
           <div style={{ width: '100%', height: '1.2px', background: 'rgba(115, 115, 115, 0.15)' }} />
