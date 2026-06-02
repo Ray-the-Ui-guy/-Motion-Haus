@@ -220,9 +220,9 @@ export default function App() {
             className="font-display"
             style={{
               fontFamily: "'VC Nudge Trial', 'Syne', sans-serif",
-              fontSize: 'clamp(28px, 4.6vw, 72px)',
+              fontSize: 'clamp(24px, 4.2vw, 68px)',
               fontWeight: 800,
-              lineHeight: '1.0',
+              lineHeight: '1.2',
               letterSpacing: '1.8px',
               textTransform: 'uppercase',
               maxWidth: '1044px',
@@ -231,10 +231,10 @@ export default function App() {
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
-              gap: '8px',
+              gap: '12px',
             }}
           >
-            <span style={{ display: 'block', width: '100%', whiteSpace: 'nowrap' }}>
+            <span style={{ display: 'block', width: '100%' }}>
               A{' '}
               <span
                 style={{
@@ -254,7 +254,7 @@ export default function App() {
               </span>{' '}
               Video Creation Agency
             </span>
-            <span style={{ display: 'block', width: '100%', color: '#FBFBFBB2', whiteSpace: 'nowrap' }}>
+            <span style={{ display: 'block', width: '100%', color: '#FBFBFBB2' }}>
               that drives engagement
             </span>
           </h1>
