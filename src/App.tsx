@@ -262,11 +262,12 @@ export default function App() {
           <BorderGlow
             edgeSensitivity={35}
             glowColor="229 100 60"
-            backgroundColor="#111111"
+            backgroundColor="#222222"
             borderRadius={1000}
             glowRadius={32}
             glowIntensity={1.8}
             colors={['#335CFF', '#4E98FF', '#002BFF']}
+            className="glowing-btn-container"
           >
             <button
               className="font-body"
@@ -281,7 +282,6 @@ export default function App() {
                 display: 'block',
                 position: 'relative',
                 zIndex: 2,
-                boxShadow: '0px -1px 3px #335CFF, 0px -4px 11px #335CFF, 0px 1px 0px #4E98FF, 0px 5px 4px rgba(0, 0, 0, 0.8), inset 0px 1px 4px #272727',
                 borderRadius: '1000px',
               }}
             >
