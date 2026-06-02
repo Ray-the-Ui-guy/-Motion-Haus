@@ -120,27 +120,50 @@ body {
   background: #333333;
 }
 
-/* ─── Video preloader & Glowing Border Button Animations ───────────────── */
+/* Active rotating border glow container */
+.glowing-btn-wrapper {
+  position: relative;
+  padding: 1.5px; /* Border thickness */
+  border-radius: 1000px;
+  overflow: hidden;
+  display: inline-block;
+  background: #3E3B3B;
+  transition: background-color 0.3s ease;
+}
 
-@keyframes borderGlowPulse {
-  0%, 100% {
-    box-shadow: 0 0 5px rgba(51, 92, 255, 0.4), 0 0 15px rgba(51, 92, 255, 0.2), inset 0 1px 4px #272727;
-    border-color: rgba(51, 92, 255, 0.5);
+.glowing-btn-wrapper::before {
+  content: '';
+  position: absolute;
+  top: -150%;
+  left: -150%;
+  width: 400%;
+  height: 400%;
+  background: conic-gradient(
+    transparent, 
+    rgba(51, 92, 255, 0.1) 30%, 
+    #335CFF 50%, 
+    rgba(51, 92, 255, 0.1) 70%, 
+    transparent 100%
+  );
+  animation: rotateGlow 3s linear infinite;
+  opacity: 0;
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.glowing-btn-wrapper:hover::before {
+  opacity: 1;
+}
+
+@keyframes rotateGlow {
+  0% {
+    transform: rotate(0deg);
   }
-  50% {
-    box-shadow: 0 0 12px rgba(51, 92, 255, 0.9), 0 0 30px rgba(51, 92, 255, 0.5), inset 0 1px 4px #272727;
-    border-color: rgba(51, 92, 255, 1);
+  100% {
+    transform: rotate(360deg);
   }
 }
 
-.glowing-btn-hover {
-  transition: all 0.3s ease-in-out !important;
-}
-
-.glowing-btn-hover:hover {
-  animation: borderGlowPulse 1.6s infinite ease-in-out;
-  border-color: #335CFF !important;
-}
 
 @keyframes recBlink {
   0%, 100% { opacity: 1; }

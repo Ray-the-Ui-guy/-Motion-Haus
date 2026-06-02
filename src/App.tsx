@@ -255,23 +255,28 @@ export default function App() {
             We enhances businesses' ability to boost customer engagement through the integration of personalized and interactive elements into their videos.
           </p>
 
-          {/* Glowing Action Button (Static, Glowing Border, No Lift on Hover) */}
-          <button
-            className="font-body glowing-btn-hover"
-            style={{
-              background: '#111111',
-              border: '1px solid #3E3B3B',
-              padding: '16px 42px',
-              fontSize: '18px',
-              fontWeight: 500,
-              color: '#FFFFFF',
-              borderRadius: '1000px',
-              cursor: 'pointer',
-              boxShadow: '0px -1px 3px #335CFF, 0px -4px 11px #335CFF, 0px 1px 0px #4E98FF, 0px 5px 4px rgba(0, 0, 0, 0.8), inset 0px 1px 4px #272727',
-            }}
-          >
-            Generate Cards
-          </button>
+          {/* Glowing Action Button (Rotating Conic Border, No Lift on Hover) */}
+          <div className="glowing-btn-wrapper">
+            <button
+              className="font-body"
+              style={{
+                background: '#111111',
+                border: 'none',
+                padding: '16px 42px',
+                fontSize: '18px',
+                fontWeight: 500,
+                color: '#FFFFFF',
+                borderRadius: '1000px',
+                cursor: 'pointer',
+                boxShadow: '0px -1px 3px #335CFF, 0px -4px 11px #335CFF, 0px 1px 0px #4E98FF, 0px 5px 4px rgba(0, 0, 0, 0.8), inset 0px 1px 4px #272727',
+                display: 'block',
+                position: 'relative',
+                zIndex: 2,
+              }}
+            >
+              Generate Cards
+            </button>
+          </div>
         </section>
 
 
