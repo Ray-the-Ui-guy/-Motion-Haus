@@ -1,15 +1,15 @@
 import { useState, useEffect } from 'react';
 import Loader from './components/Loader';
 import GlowingButton from './components/GlowingButton';
-const heroBg = 'https://files.catbox.moe/u0fblg.png';
+const heroBg = 'https://files.catbox.moe/cgdvr2.png';
 import badgeIcon from './assets/Frame 2087328322.svg';
-const card1 = 'https://files.catbox.moe/kixh2j.png';
-const card2 = 'https://files.catbox.moe/lq17t3.png';
-const card3 = 'https://files.catbox.moe/n6n8sn.png';
-const card4 = 'https://files.catbox.moe/54s3x8.png';
-const card5 = 'https://files.catbox.moe/97a9l4.png';
-const card6 = 'https://files.catbox.moe/m7q5pl.png';
-const card7 = 'https://files.catbox.moe/2s78d7.png';
+const card1 = 'https://files.catbox.moe/jv8vx5.png';
+const card2 = 'https://files.catbox.moe/v5lta9.png';
+const card3 = 'https://files.catbox.moe/mg9ura.png';
+const card4 = 'https://files.catbox.moe/lod8mv.png';
+const card5 = 'https://files.catbox.moe/6dlwo5.png';
+const card6 = 'https://files.catbox.moe/duf4bo.png';
+const card7 = 'https://files.catbox.moe/it9u24.png';
 
 // Custom 3D Panoramic Curved Gallery
 import ThreeDGallery from './components/ThreeDGallery';
