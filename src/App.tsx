@@ -83,17 +83,6 @@ export default function App() {
 
   return (
     <>
-      {/* SVG Filters for Handdrawn Wiggle effect */}
-      <svg style={{ position: 'absolute', width: 0, height: 0, pointerEvents: 'none' }}>
-        <defs>
-          <filter id="handdrawn-wiggle">
-            <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" result="noise" />
-            <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.5" xChannelSelector="R" yChannelSelector="G">
-              <animate attributeName="scale" values="2;3.5;1.5;3;2" dur="0.75s" repeatCount="indefinite" />
-            </feDisplacementMap>
-          </filter>
-        </defs>
-      </svg>
       {loading && <Loader onComplete={() => setLoading(false)} />}
       <main
         style={{
@@ -270,6 +259,7 @@ export default function App() {
                   }}
                 >
                   <svg
+                    className="handdrawn-animated"
                     viewBox="0 0 303 100"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -277,12 +267,11 @@ export default function App() {
                     style={{
                       position: 'absolute',
                       top: '-0.45em',
-                      left: 'calc(-1.35em + 41.2px)',
-                      width: 'calc(100% + 2.7em - 82.4px)',
+                      left: 'calc(-1.35em + 61.2px)',
+                      width: 'calc(100% + 2.7em - 122.4px)',
                       height: 'calc(100% + 0.9em)',
                       pointerEvents: 'none',
                       zIndex: 0,
-                      filter: 'url(#handdrawn-wiggle)',
                     }}
                   >
                     <path

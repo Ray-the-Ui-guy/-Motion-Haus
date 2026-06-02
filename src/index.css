@@ -341,3 +341,27 @@ body {
   animation: handdrawnDraw 2.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
+/* Classic stop-motion cartoon cel sketch animation */
+@keyframes classicScribble {
+  0%, 100% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+  20% {
+    transform: translate(-0.8px, 0.4px) scale(1.004, 0.996) rotate(0.12deg);
+  }
+  40% {
+    transform: translate(0.8px, -0.4px) scale(0.996, 1.004) rotate(-0.12deg);
+  }
+  60% {
+    transform: translate(-0.4px, -0.4px) scale(1.001, 1.001) rotate(0.06deg);
+  }
+  80% {
+    transform: translate(0.4px, 0.4px) scale(0.999, 0.999) rotate(-0.06deg);
+  }
+}
+
+.handdrawn-animated {
+  transform-origin: center;
+  animation: classicScribble 0.9s steps(5) infinite;
+}
+
