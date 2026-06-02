@@ -1,5 +1,4 @@
-import React, { useRef, useEffect } from 'react';
-import gsap from 'gsap';
+import React from 'react';
 import TickerCard from './TickerCard';
 
 export interface GalleryItem {
@@ -15,84 +14,18 @@ interface ThreeDGalleryProps {
 }
 
 export const ThreeDGallery: React.FC<ThreeDGalleryProps> = ({ items }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const dxRef = useRef(0);
+  const total = items.length;
+  const midIndex = Math.floor(total / 2);
 
-  // Set card references
-  cardRefs.current = [];
-  const addToRefs = (el: HTMLDivElement | null) => {
-    if (el && !cardRefs.current.includes(el)) {
-      cardRefs.current.push(el);
-    }
-  };
-
-  useEffect(() => {
-    let animationFrameId: number;
-    const spacing = 220; // Proportional snug spacing for larger cards
-    const total = items.length;
-    const totalWidth = total * spacing;
-    const halfTotalWidth = totalWidth / 2;
-
-    const tick = () => {
-      // Update autoplay horizontal carousel offset from start
-      dxRef.current += 2.4; // Speed of autoscroll
-
-      cardRefs.current.forEach((card, index) => {
-        if (!card) return;
-
-        // Base coordinate on a horizontal plane
-        const baseX = (index - Math.floor(total / 2)) * spacing;
-        const targetX = baseX + dxRef.current;
-
-        // Infinite wrap logic
-        let wrappedX = ((targetX + halfTotalWidth) % totalWidth);
-        if (wrappedX < 0) wrappedX += totalWidth;
-        wrappedX -= halfTotalWidth;
-
-        // Calculate continuous smooth active position offset
-        const position = wrappedX / spacing;
-
-        // Enhanced Ultrawide Monitor Curvature (much more curved)
-        const targetRotateY = position * 19; // Steeper angle
-        const targetZ = -Math.abs(position) * 95; // Deeper depth displacement
-        const targetScale = 1.16 - Math.abs(position) * 0.085; // Stronger focal center scale
-        const targetY = Math.abs(position) * 6; // curved monitor dip
-
-        // Custom opacity: fade out smoothly near the edges of the widescreen viewport
-        let baseOpacity = 1;
-        if (Math.abs(wrappedX) > 600) {
-          baseOpacity = Math.max(0, (halfTotalWidth - Math.abs(wrappedX)) / (halfTotalWidth - 600));
-        }
-
-        // Set high-performance transform styles via GSAP quickSetter
-        gsap.set(card, {
-          x: wrappedX,
-          y: targetY,
-          rotationY: targetRotateY,
-          z: targetZ,
-          scale: targetScale,
-          opacity: baseOpacity,
-          zIndex: 0,
-        });
-      });
-
-      animationFrameId = requestAnimationFrame(tick);
-    };
-
-    animationFrameId = requestAnimationFrame(tick);
-
-    return () => {
-      cancelAnimationFrame(animationFrameId);
-    };
-  }, [items.length]);
+  // Spacing width of each card slice to meet exactly edge-to-edge
+  const cardWidth = 262; 
+  const angleStep = 9.5; // Steeper angle step for tighter fit
 
   return (
     <div
-      ref={containerRef}
       style={{
         width: '100%',
-        height: '520px', // Restrict height to completely remove space after carousel
+        height: '420px', 
         position: 'relative',
         background: 'transparent',
         display: 'flex',
@@ -102,17 +35,17 @@ export const ThreeDGallery: React.FC<ThreeDGalleryProps> = ({ items }) => {
         padding: 0,
       }}
     >
-      {/* ── VIEWPORT CONTAINER (Clipped exactly at vertical dashed lines) ── */}
+      {/* ── VIEWPORT CONTAINER ── */}
       <div
         style={{
-          width: 'calc(100% - 116px)', // Align and clip exactly at vertical dashed lines (58px offset on each side)
+          width: 'calc(100% - 116px)',
           height: '100%',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           overflow: 'hidden',
           borderRadius: '24px',
-          perspective: '2000px', // Premium depth perspective camera
+          perspective: '1500px', 
         }}
       >
         <div
@@ -127,29 +60,39 @@ export const ThreeDGallery: React.FC<ThreeDGalleryProps> = ({ items }) => {
             transformStyle: 'preserve-3d',
           }}
         >
-          {items.map((card) => (
-            <div
-              key={card.id}
-              ref={addToRefs}
-              style={{
-                position: 'absolute',
-                width: 'clamp(240px, 20vw, 310px)', // Increased size more
-                height: 'auto',
-                transformStyle: 'preserve-3d',
-                pointerEvents: 'auto',
-              }}
-            >
-              <TickerCard
-                id={card.id}
-                imageUrl={card.imageUrl}
-                title={card.title}
-                metric={card.metric}
-                description={card.description}
-                width="100%"
-                height="100%"
-              />
-            </div>
-          ))}
+          {items.map((card, index) => {
+            const position = index - midIndex;
+            const translateX = position * cardWidth;
+            const rotateY = position * angleStep;
+            // Depth translation to create the curved screen shape
+            const translateZ = -Math.abs(position) * 22; 
+            // Slight Y dip to simulate realistic curved monitor view from center
+            const translateY = Math.abs(position) * 2;
+
+            return (
+              <div
+                key={card.id}
+                style={{
+                  position: 'absolute',
+                  width: `${cardWidth}px`,
+                  height: 'auto',
+                  transformStyle: 'preserve-3d',
+                  pointerEvents: 'auto',
+                  transform: `translateX(${translateX}px) translateY(${translateY}px) rotateY(${rotateY}deg) translateZ(${translateZ}px)`,
+                }}
+              >
+                <TickerCard
+                  id={card.id}
+                  imageUrl={card.imageUrl}
+                  title={card.title}
+                  metric={card.metric}
+                  description={card.description}
+                  width="100%"
+                  height="100%"
+                />
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
