@@ -201,18 +201,19 @@ export default function App() {
           <h1
             className="font-display"
             style={{
-              fontSize: 'clamp(22px, 3.4vw, 42px)',
+              fontFamily: "'VC Nudge Trial', 'Syne', sans-serif",
+              fontSize: 'clamp(28px, 4.6vw, 72px)',
               fontWeight: 800,
-              lineHeight: '1.4',
-              letterSpacing: '1.5px',
+              lineHeight: '1.0',
+              letterSpacing: '1.8px',
               textTransform: 'uppercase',
-              maxWidth: '1200px',
+              maxWidth: '1044px',
               margin: '0 auto 28px',
               color: '#FBFBFBB2',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
-              gap: '4px',
+              gap: '8px',
             }}
           >
             <span style={{ display: 'block', width: '100%', whiteSpace: 'nowrap' }}>
@@ -244,10 +245,11 @@ export default function App() {
           <p
             className="font-body"
             style={{
-              fontSize: 'clamp(15px, 1.6vw, 18px)',
+              fontFamily: "'Inter Tight', sans-serif",
+              fontSize: 'clamp(14px, 1.5vw, 18px)',
               fontWeight: 400,
-              lineHeight: '1.6',
-              letterSpacing: '0.5px',
+              lineHeight: '32px',
+              letterSpacing: '0.56px',
               color: '#BBBBBB',
               maxWidth: '668px',
               margin: '0 auto 40px',
