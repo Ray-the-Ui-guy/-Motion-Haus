@@ -62,7 +62,7 @@ export default function TickerCard({
             style={{
               width: '100%',
               height: '100%',
-              objectFit: 'cover',
+              objectFit: 'fill',
               display: 'block',
               pointerEvents: 'none',
             }}
