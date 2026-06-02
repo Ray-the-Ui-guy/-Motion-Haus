@@ -201,7 +201,7 @@ export default function App() {
           <h1
             className="font-display"
             style={{
-              fontSize: 'clamp(28px, 4.4vw, 56px)',
+              fontSize: 'clamp(22px, 3.4vw, 42px)',
               fontWeight: 800,
               lineHeight: '1.4',
               letterSpacing: '1.5px',
@@ -215,7 +215,7 @@ export default function App() {
               gap: '4px',
             }}
           >
-            <span style={{ display: 'block', width: '100%' }}>
+            <span style={{ display: 'block', width: '100%', whiteSpace: 'nowrap' }}>
               A{' '}
               <span
                 style={{
@@ -235,7 +235,7 @@ export default function App() {
               </span>{' '}
               Video Creation Agency
             </span>
-            <span style={{ display: 'block', width: '100%', color: '#FBFBFBB2' }}>
+            <span style={{ display: 'block', width: '100%', color: '#FBFBFBB2', whiteSpace: 'nowrap' }}>
               that drives engagement
             </span>
           </h1>
